@@ -1,25 +1,35 @@
 import type { Metadata } from "next";
-import { Lora, DM_Sans, DM_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { WEB_APP_URL } from "@/lib/config";
 
-const lora = Lora({
-  subsets: ["latin"],
+// Fonts are self-hosted from @fontsource (Latin subset) so the build never
+// depends on fetching Google Fonts at build time.
+const lora = localFont({
   variable: "--font-lora",
-  weight: ["400", "700"],
+  display: "swap",
+  src: [
+    { path: "../../node_modules/@fontsource/lora/files/lora-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../../node_modules/@fontsource/lora/files/lora-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
 });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
+const dmSans = localFont({
   variable: "--font-dm-sans",
-  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  src: [
+    { path: "../../node_modules/@fontsource/dm-sans/files/dm-sans-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../../node_modules/@fontsource/dm-sans/files/dm-sans-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../../node_modules/@fontsource/dm-sans/files/dm-sans-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "../../node_modules/@fontsource/dm-sans/files/dm-sans-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
 });
 
-const dmMono = DM_Mono({
-  subsets: ["latin"],
+const dmMono = localFont({
   variable: "--font-dm-mono",
-  weight: ["400"],
+  display: "swap",
+  src: [{ path: "../../node_modules/@fontsource/dm-mono/files/dm-mono-latin-400-normal.woff2", weight: "400", style: "normal" }],
 });
 
 export const metadata: Metadata = {
