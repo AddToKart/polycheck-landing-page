@@ -1,0 +1,163 @@
+"use client";
+
+import { useState } from "react";
+import { ShieldCheck, Lock, Smartphone, MapPin, Clock, CheckCircle2 } from "lucide-react";
+import Reveal from "./Reveal";
+
+interface ThreatItem {
+  threat: string;
+  solution: string;
+  detail: string;
+  icon: any;
+  securityLayer: string;
+  status: string;
+}
+
+const threats: ThreatItem[] = [
+  {
+    threat: "Sending QR to absent friend",
+    solution: "Short expiry (1–15 min) + GPS geofence + server re-validation",
+    detail: "QR tokens expire rapidly and are strictly geofenced to the physical classroom coordinates. An absent student outside the geofence radius cannot validate the token.",
+    icon: MapPin,
+    securityLayer: "Dual-Fence Verification",
+    status: "BLOCKED",
+  },
+  {
+    threat: "Logging into someone else's account",
+    solution: "Single active session per account (Better Auth)",
+    detail: "Polycheck enforces single active hardware session tokens via Better Auth. Logging in on a proxy phone automatically terminates the legitimate session.",
+    icon: Lock,
+    securityLayer: "Device Session Binding",
+    status: "REJECTED",
+  },
+  {
+    threat: "GPS spoofing apps",
+    solution: "On-device mock-GPS detection + server-side verification",
+    detail: "The app refuses mock-location providers, and the server flags rooted devices, emulators, hooking tools and suspicious GPS accuracy as disputes for teacher review.",
+    icon: ShieldCheck,
+    securityLayer: "Mock Location Detector",
+    status: "FLAGGED & BLOCKED",
+  },
+  {
+    threat: "Screenshot replay of QR",
+    solution: "Signed issuedAt timestamp + server expiry check + duplicate rejection",
+    detail: "Each token is signed with a high-resolution UTC timestamp. Attempting to scan a static photo of a QR code fails timestamp and duplicate payload validation.",
+    icon: Smartphone,
+    securityLayer: "Ed25519 Time Stamp",
+    status: "REJECTED",
+  },
+  {
+    threat: "Clock manipulation",
+    solution: "issuedAt is cryptographically signed into the token — device clock is irrelevant",
+    detail: "Device system clock modifications do not alter the signed timestamp embedded in the Ed25519 token signature verified against server UTC time.",
+    icon: Clock,
+    securityLayer: "Trusted Server Clock",
+    status: "IMMUTABLE",
+  },
+];
+
+export default function AntiCheatShowcase() {
+  const [selectedThreat, setSelectedThreat] = useState(0);
+
+  return (
+    <section className="py-24 md:py-32 bg-white dark:bg-[#070709] px-6 md:px-8 border-b border-zinc-200/80 dark:border-zinc-800/80 grain">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="kicker kicker--center mb-5">Anti-Cheat Defense</span>
+          <h2 className="font-lora font-bold text-3xl sm:text-4xl md:text-5xl text-zinc-900 dark:text-white mb-4">
+            Every angle covered.
+          </h2>
+          <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 font-dmSans">
+            Multi-layered security protocols engineered for complete academic integrity.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <Reveal className="lg:col-span-6" delay={0}>
+            <div className="space-y-3">
+              {threats.map((item, i) => {
+                const isSelected = selectedThreat === i;
+                return (
+                  <button
+                    key={i}
+                    onClick={() => setSelectedThreat(i)}
+                    aria-pressed={isSelected}
+                    className={`w-full p-4 text-left transition-all border flex items-center justify-between gap-4 ${
+                      isSelected
+                        ? "bento-card border-maroon dark:border-golden"
+                        : "bg-zinc-50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 hover:border-zinc-300 dark:hover:border-zinc-600"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className={`font-mono text-[10px] tracking-[0.25em] flex-shrink-0 ${
+                        isSelected ? "text-maroon dark:text-golden" : "text-zinc-400 dark:text-zinc-600"
+                      }`}>
+                        0{i + 1}
+                      </span>
+                      <div className={`w-9 h-9 flex items-center justify-center flex-shrink-0 border ${
+                        isSelected ? "bg-maroon text-golden dark:bg-golden dark:text-maroon-dark border-maroon dark:border-golden" : "bg-maroon/5 dark:bg-golden/10 text-maroon dark:text-golden border-maroon/10 dark:border-golden/20"
+                      }`}>
+                        <item.icon className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <p className="font-dmSans font-bold text-sm leading-snug">
+                          {item.threat}
+                        </p>
+                        <p className="text-xs text-zinc-400">
+                          Layer: {item.securityLayer}
+                        </p>
+                      </div>
+                    </div>
+
+                    <span className={`px-2.5 py-1 text-[10px] font-mono font-bold uppercase flex-shrink-0 border ${
+                      isSelected ? "bg-maroon/10 dark:bg-golden/10 text-maroon dark:text-golden border-maroon/20 dark:border-golden/30" : "bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800"
+                    }`}>
+                      {item.status}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </Reveal>
+
+          <Reveal className="lg:col-span-6" delay={150}>
+            <div
+              aria-live="polite"
+              className="bento-card p-8 relative overflow-hidden h-full"
+            >
+              <div aria-hidden="true" className="absolute top-0 left-0 h-[3px] w-16 bg-golden" />
+              <div className="flex items-center justify-between pb-4 border-b border-zinc-200 dark:border-zinc-800 mb-6">
+                <span className="text-xs font-mono font-bold uppercase text-maroon dark:text-golden flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Defense Protocol Details
+                </span>
+                <span className="text-xs font-mono text-zinc-400">SCORE: 100% SECURE</span>
+              </div>
+
+              <h3 className="font-lora font-bold text-xl text-zinc-900 dark:text-white mb-2">
+                Threat: &quot;{threats[selectedThreat].threat}&quot;
+              </h3>
+
+              <div className="mb-6 p-4 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+                <p className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1">
+                  How Polycheck Stops It:
+                </p>
+                <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 font-dmSans">
+                  {threats[selectedThreat].solution}
+                </p>
+              </div>
+
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-dmSans mb-6">
+                {threats[selectedThreat].detail}
+              </p>
+
+              <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-300 text-xs font-mono flex items-center justify-between">
+                <span>STATUS: {threats[selectedThreat].status}</span>
+                <span className="text-[10px] uppercase">Cryptographically Verified</span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
