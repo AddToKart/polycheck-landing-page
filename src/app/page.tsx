@@ -6,6 +6,7 @@ import ProblemStatement from "@/components/ProblemStatement";
 import SolutionOverview from "@/components/SolutionOverview";
 import ProductStage from "@/components/ProductStage";
 import BentoFeatures from "@/components/BentoFeatures";
+import RoleFeatures from "@/components/RoleFeatures";
 import AntiCheatShowcase from "@/components/AntiCheatShowcase";
 import PlatformAvailability from "@/components/PlatformAvailability";
 import TechStack from "@/components/TechStack";
@@ -31,6 +32,7 @@ export default function Home() {
         <SolutionOverview />
         <ProductStage />
         <BentoFeatures />
+        <RoleFeatures />
         <AntiCheatShowcase />
         <PlatformAvailability />
         <TechStack />

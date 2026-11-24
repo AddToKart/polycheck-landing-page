@@ -1,6 +1,6 @@
 # Polycheck Landing Page
 
-Marketing + install page for **Polycheck**, the PUP Santa Maria attendance
+Marketing + install page for **Polycheck**, the attendance
 management system. It is a fully static Next.js export (`output: "export"`):
 there is no server runtime to deploy.
 
@@ -50,5 +50,4 @@ Set it at build time, e.g. when the dashboard moves to a custom domain.
 
 - The QR codes on the page are decorative samples with an inert payload; they
   are not real sessions or tokens.
-- `plan/LANDING_PAGE_PLAN.md` is the original design plan and predates the
-  Flutter client; the source of truth for content is `src/components`.
+

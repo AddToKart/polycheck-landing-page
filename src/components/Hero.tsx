@@ -16,7 +16,7 @@ export default function Hero() {
         <div aria-hidden="true" className="hidden lg:flex absolute left-10 top-1/2 -translate-y-1/2 flex-col items-center gap-5 pointer-events-none">
           <span className="h-16 w-px bg-maroon/25 dark:bg-golden/25" />
           <span className="text-[10px] font-mono uppercase tracking-[0.35em] text-zinc-400 dark:text-zinc-500 [writing-mode:vertical-rl]">
-            PUP · Est. 1904 · Iskolar ng Bayan
+            Polycheck · Attendance, Verified
           </span>
           <span className="h-16 w-px bg-maroon/25 dark:bg-golden/25" />
         </div>
@@ -28,14 +28,14 @@ export default function Hero() {
         <div className="relative z-10 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 items-center">
           {/* Left Column */}
           <div className="lg:col-span-7 text-left">
-            <span className="kicker mb-6 animate-fade-in-up">Iskolar ng Bayan · PUP Santa Maria</span>
+            <span className="kicker mb-6 animate-fade-in-up">Attendance Management System</span>
 
             <h1 className="font-lora font-bold text-[clamp(3.25rem,9vw,7.5rem)] lg:text-8xl text-zinc-900 dark:text-white leading-[0.9] tracking-[-0.02em] mb-7 animate-fade-in-up delay-100">
               Polycheck<span className="text-maroon dark:text-golden">.</span>
             </h1>
 
             <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 font-dmSans max-w-xl leading-relaxed mb-10 animate-fade-in-up delay-200">
-              A unified, offline-first attendance management system for the Polytechnic University of the Philippines. Cryptographic QR codes, GPS geofence validation, and live analytics.
+              An offline-first attendance system for classrooms. Signed QR codes, GPS geofence validation, online and in-person sessions, and live analytics for students, faculty and administrators.
             </p>
 
             {/* Action Buttons */}
@@ -64,7 +64,7 @@ export default function Hero() {
                   <MapPin className="w-4 h-4 text-maroon dark:text-golden" /> Haversine Geofence
                 </span>
                 <span className="flex items-center gap-2">
-                  <Lock className="w-4 h-4 text-maroon dark:text-golden" /> Zero-Proxy Defense
+                  <Lock className="w-4 h-4 text-maroon dark:text-golden" /> Anti-Proxy Defense
                 </span>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function Hero() {
                 <div className="px-6 py-5 bg-maroon dark:bg-maroon-dark flex items-center justify-between">
                   <div>
                     <p className="text-[9px] tracking-[0.3em] text-golden font-mono font-semibold uppercase mb-1">
-                      Polytechnic University
+                      Polycheck
                     </p>
                     <p className="font-lora font-bold text-white text-lg leading-none">
                       Digital Student ID
@@ -104,15 +104,15 @@ export default function Hero() {
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <span className="text-zinc-400 dark:text-zinc-500 font-mono uppercase tracking-wider text-[10px]">Student No.</span>
-                    <span className="font-mono font-semibold text-maroon dark:text-golden text-right">2023-01942-SM-0</span>
+                    <span className="font-mono font-semibold text-maroon dark:text-golden text-right">2023-01942</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <span className="text-zinc-400 dark:text-zinc-500 font-mono uppercase tracking-wider text-[10px]">Program</span>
                     <span className="font-semibold text-zinc-900 dark:text-white text-right">BS Information Technology</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-zinc-400 dark:text-zinc-500 font-mono uppercase tracking-wider text-[10px]">College</span>
-                    <span className="font-semibold text-zinc-900 dark:text-white text-right">CCIS · Santa Maria</span>
+                    <span className="text-zinc-400 dark:text-zinc-500 font-mono uppercase tracking-wider text-[10px]">Section</span>
+                    <span className="font-semibold text-zinc-900 dark:text-white text-right">BSIT 3-1</span>
                   </div>
                 </div>
 
@@ -122,7 +122,7 @@ export default function Hero() {
                     <span className="flex items-center gap-1.5">
                       <QrCode className="w-3.5 h-3.5" /> Session #802
                     </span>
-                    <span>GPS Radius · 30M</span>
+                    <span>GPS Radius · 40M</span>
                   </div>
 
                   <div className="relative p-2.5 bg-white shadow-md mb-2">

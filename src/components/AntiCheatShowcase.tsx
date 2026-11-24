@@ -24,8 +24,8 @@ const threats: ThreatItem[] = [
   },
   {
     threat: "Logging into someone else's account",
-    solution: "Single active session per account (Better Auth)",
-    detail: "Polycheck enforces single active hardware session tokens via Better Auth. Logging in on a proxy phone automatically terminates the legitimate session.",
+    solution: "One active device per student account",
+    detail: "While a student is signed in on one phone, a login from any other device is rejected. After logging out, a different device has to wait out a cooldown (2 hours by default), and faculty can release a device in an emergency.",
     icon: Lock,
     securityLayer: "Device Session Binding",
     status: "REJECTED",
@@ -40,10 +40,10 @@ const threats: ThreatItem[] = [
   },
   {
     threat: "Screenshot replay of QR",
-    solution: "Signed issuedAt timestamp + server expiry check + duplicate rejection",
-    detail: "Each token is signed with a high-resolution UTC timestamp. Attempting to scan a static photo of a QR code fails timestamp and duplicate payload validation.",
+    solution: "Signed issue time + short validity + geofence + duplicate rejection",
+    detail: "Every token carries a signed issue time and a short validity window. A forwarded screenshot goes stale quickly, fails the geofence if the student is not in the room, and duplicate submissions are rejected by the server.",
     icon: Smartphone,
-    securityLayer: "Ed25519 Time Stamp",
+    securityLayer: "Signed Time Window",
     status: "REJECTED",
   },
   {
@@ -68,7 +68,7 @@ export default function AntiCheatShowcase() {
             Every angle covered.
           </h2>
           <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 font-dmSans">
-            Multi-layered security protocols engineered for complete academic integrity.
+            Layered checks that make proxy attendance hard to pull off and easy to catch.
           </p>
         </div>
 
@@ -130,7 +130,7 @@ export default function AntiCheatShowcase() {
                 <span className="text-xs font-mono font-bold uppercase text-maroon dark:text-golden flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Defense Protocol Details
                 </span>
-                <span className="text-xs font-mono text-zinc-400">SCORE: 100% SECURE</span>
+                <span className="text-xs font-mono text-zinc-400">LAYERED DEFENSE</span>
               </div>
 
               <h3 className="font-lora font-bold text-xl text-zinc-900 dark:text-white mb-2">
@@ -152,7 +152,7 @@ export default function AntiCheatShowcase() {
 
               <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-300 text-xs font-mono flex items-center justify-between">
                 <span>STATUS: {threats[selectedThreat].status}</span>
-                <span className="text-[10px] uppercase">Cryptographically Verified</span>
+                <span className="text-[10px] uppercase">Server Verified</span>
               </div>
             </div>
           </Reveal>

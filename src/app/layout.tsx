@@ -24,13 +24,13 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(WEB_APP_URL),
-  title: "Polycheck — Attendance Management System for PUP",
+  title: "Polycheck — Attendance Management System",
   description:
-    "A unified, offline-first attendance management system for the Polytechnic University of the Philippines. QR code scanning, GPS geofencing, and real-time analytics.",
+    "An offline-first attendance management system. Signed QR codes, GPS geofencing, online and in-person sessions, and live analytics for students, faculty and administrators.",
   openGraph: {
-    title: "Polycheck — PUP Attendance System",
+    title: "Polycheck — Attendance Management System",
     description:
-      "Cryptographic QR codes. GPS geofencing. Offline-first. The attendance system built for PUP.",
+      "Signed QR codes. GPS geofencing. Offline-first. Attendance that is hard to fake and easy to run.",
   },
   other: {
     "theme-color": "#7B1113",

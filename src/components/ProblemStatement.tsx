@@ -34,7 +34,7 @@ export default function ProblemStatement() {
               Traditional attendance is broken.
             </h2>
             <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-dmSans">
-              Paper sign sheets get lost. Proxy attendance goes undetected. Students in remote campuses can&apos;t always reach the system. Manual tallying wastes hours that should be spent teaching.
+              Paper sign sheets get lost. Proxy attendance goes undetected. Students in low-signal classrooms can&apos;t always reach the system. Manual tallying wastes hours that should be spent teaching.
             </p>
           </div>
         </Reveal>

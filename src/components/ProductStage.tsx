@@ -58,7 +58,7 @@ export default function ProductStage() {
               Experience Polycheck in Action.
             </h2>
             <p className="text-sm md:text-base text-zinc-400 font-dmSans">
-              Switch views to explore the native mobile scanner, live faculty console, and Haversine GPS radar engine.
+              Switch views to explore the signed QR scanner, the live faculty console, and the GPS geofence check.
             </p>
           </div>
         </Reveal>
@@ -105,14 +105,14 @@ export default function ProductStage() {
                   P
                 </div>
                 <div>
-                  <h3 className="font-lora font-bold text-white text-base">PUP Santa Maria · Session #802</h3>
-                  <p className="text-xs text-golden/80 font-mono">BSIT 3-1 Software Engineering (COMP 20133)</p>
+                  <h3 className="font-lora font-bold text-white text-base">Software Engineering · Session #802</h3>
+                  <p className="text-xs text-golden/80 font-mono">Section A · Room Lab 3</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-2 font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5">
                 <span className="w-2 h-2 bg-emerald-400 animate-pulse" />
-                <span>Ed25519 Active · WebSocket Connected</span>
+                <span>Signed QR Active · Live Sync</span>
               </div>
             </div>
 
@@ -126,17 +126,17 @@ export default function ProductStage() {
               >
                 <div className="lg:col-span-6 space-y-4">
                   <span className="inline-block px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider bg-golden/20 text-golden border border-golden/30">
-                    Hardware QR Engine
+                    Signed QR Engine
                   </span>
                   <h3 className="font-lora font-bold text-2xl sm:text-3xl text-white">
-                    Real Scannable QR Token
+                    Short-Lived Signed QR Token
                   </h3>
                   <p className="text-sm text-white/80 leading-relaxed font-dmSans">
-                    Every attendance QR code is cryptographically signed with an Ed25519 private key. Point your physical smartphone camera at the code to test payload validation.
+                    Faculty display a QR code signed with an Ed25519 key and valid for a short, instructor-set window. Students scan it in the Polycheck app, which checks the token, the time and the location.
                   </p>
                   <div className="pt-2 flex items-center gap-4 text-xs font-mono text-golden">
                     <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> Expiry: {formatTime(timeLeft)}</span>
-                    <span className="flex items-center gap-1"><Zap className="w-4 h-4" /> Single Session Only</span>
+                    <span className="flex items-center gap-1"><Zap className="w-4 h-4" /> One Class Session</span>
                   </div>
                 </div>
 
@@ -173,15 +173,15 @@ export default function ProductStage() {
                 className="space-y-4"
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="font-lora font-bold text-xl text-white">Live Student Check-In Stream</h3>
+                  <h3 className="font-lora font-bold text-xl text-white">Live Check-In Stream</h3>
                   <span className="text-xs font-mono text-golden">41 / 45 Present (92.4%)</span>
                 </div>
 
                 <div className="space-y-3">
                   {[
-                    { name: "Dela Cruz, Juan A.", no: "2023-01942-SM-0", dist: "12.4m", time: "Just now" },
-                    { name: "Santos, Maria Clara", no: "2023-08119-SM-0", dist: "8.1m", time: "2m ago" },
-                    { name: "Reyes, Mark Anthony", no: "2023-04210-SM-0", dist: "14.2m", time: "5m ago" },
+                    { name: "Dela Cruz, Juan A.", no: "2023-01942", dist: "12.4m", time: "Just now" },
+                    { name: "Santos, Maria Clara", no: "2023-08119", dist: "8.1m", time: "2m ago" },
+                    { name: "Reyes, Mark Anthony", no: "2023-04210", dist: "14.2m", time: "5m ago" },
                   ].map((item, i) => (
                     <div key={i} className="p-4 bg-black/40 border border-golden/20 flex items-center justify-between font-dmSans">
                       <div className="flex items-center gap-3">
@@ -215,7 +215,7 @@ export default function ProductStage() {
                     Haversine Geofence Engine
                   </span>
                   <h3 className="font-lora font-bold text-2xl sm:text-3xl text-white">
-                    PUP Santa Maria Campus Radar
+                    Classroom GPS Radar
                   </h3>
                   <p className="text-sm text-white/80 leading-relaxed font-dmSans">
                     GPS coordinates are calculated locally using the Haversine distance formula to enforce the geofence radius the instructor sets for the classroom (10–500 m).
@@ -248,7 +248,7 @@ export default function ProductStage() {
               <span className="flex items-center gap-1.5">
                 <RefreshCw className="w-3.5 h-3.5" /> Polycheck Stage Engine
               </span>
-              <span>100% Cryptographically Sealed</span>
+              <span>Signed · Time-boxed · Geofenced</span>
             </div>
           </div>
         </Reveal>

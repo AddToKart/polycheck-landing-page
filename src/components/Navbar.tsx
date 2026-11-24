@@ -9,6 +9,7 @@ import DownloadModal from "./DownloadModal";
 const navLinks = [
   { label: "Overview", href: "#stage" },
   { label: "Features", href: "#features" },
+  { label: "Roles", href: "#roles" },
   { label: "Download", href: "#download" },
 ];
 

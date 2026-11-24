@@ -10,41 +10,41 @@ const tiles = [
     index: "01",
     title: "Cryptographic QR Token Engine",
     badge: "Ed25519 Cryptographic Signatures",
-    body: "Every QR code generated in Polycheck is cryptographically signed using an Ed25519 key pair, bound to the active session ID, and programmed with dynamic 1–15 minute expiration cycles. Screenshot replays and screen recordings are rendered completely invalid.",
-    foot: "Tamper-Proof Payload Signature",
+    body: "Every attendance QR is signed with an Ed25519 key, bound to its class session, and valid only for a short, instructor-set window of up to 15 minutes. Stale or tampered tokens are rejected, and the server re-verifies every scan.",
+    foot: "Signed, Time-Boxed Payload",
     mark: true,
   },
   {
     index: "02",
     title: "GPS Geofencing",
     badge: "Haversine GPS",
-    body: "Instructors set a geofence radius (10–500 m) around the classroom. Verified locally on the student's phone using the Haversine formula and re-validated server-side.",
-    foot: "Hardware Proximity Verified",
+    body: "In-person sessions use a geofence (10–500 m) that the instructor sets on a map. The phone checks it with the Haversine formula and the server re-validates it. Online sessions skip GPS and use check-in and check-out checkpoints with an optional meeting PIN.",
+    foot: "Proximity Verified",
   },
   {
     index: "03",
     title: "Offline-First Classroom Attendance",
-    badge: "Offline SQLite Vault",
-    body: "Classroom cell signals can be unreliable. Polycheck records and encrypts check-in payloads inside a local device SQLite database. Once network connectivity is restored, the queue automatically syncs to the cloud via WebSockets.",
-    foot: "Automatic Background Queue Reconciliation",
+    badge: "Offline Queue",
+    body: "Classroom signals are unreliable. Polycheck validates the signed token and location on the phone, then saves the check-in in an on-device database. It syncs automatically when the phone reconnects or the app is reopened.",
+    foot: "Automatic Sync on Reconnect",
   },
   {
     index: "04",
-    title: "Faculty Analytics & CSV Export",
-    badge: "Analytics",
-    body: "Real-time faculty dashboards with donut attendance rates, student breakdown logs, and instant audit-ready CSV exports.",
+    title: "Live Session Cockpit & Reports",
+    badge: "Real-Time",
+    body: "Watch check-ins arrive in real time, put a projector-friendly kiosk view on screen, and export attendance reports as CSV.",
   },
   {
     index: "05",
-    title: "Student Officer Permissions",
-    badge: "RBAC Roles",
-    body: "Class presidents can generate session QRs and QAC members upload timestamped proof-of-class photo audits.",
+    title: "Section Officers",
+    badge: "Role-Based",
+    body: "Class presidents can create sessions for their section, and QAC members can upload timestamped proof-of-class photos for faculty review.",
   },
   {
     index: "06",
     title: "Multi-Layered Anti-Cheat Defense",
     badge: "Anti-Proxy",
-    body: "Single active hardware device sessions (Better Auth), clock drift rejection, coordinate plausibility checks, and dispute override resolution logs guarantee complete academic integrity.",
+    body: "One active device per student, a trusted server clock, mock-GPS and rooted-device detection, and a dispute workflow where faculty accept, reject or manually override flagged records.",
   },
 ];
 
@@ -56,10 +56,10 @@ export default function BentoFeatures() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="kicker kicker--center mb-5">Architecture &amp; Features</span>
             <h2 className="font-lora font-bold text-3xl sm:text-4xl md:text-5xl text-zinc-900 dark:text-white mb-4 leading-tight">
-              Engineered for academic integrity.
+              Built so attendance can be trusted.
             </h2>
             <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 font-dmSans">
-              A cohesive bento grid architecture built specifically for the Polytechnic University of the Philippines.
+              The core mechanics behind every Polycheck attendance record.
             </p>
           </div>
         </Reveal>
@@ -101,7 +101,7 @@ export default function BentoFeatures() {
                 <span className="flex items-center gap-2">
                   <Lock className="w-4 h-4 text-emerald-500" /> {tiles[0].foot}
                 </span>
-                <span className="text-maroon dark:text-golden font-bold">100% SECURE</span>
+                <span className="text-maroon dark:text-golden font-bold">ED25519</span>
               </div>
             </div>
           </Reveal>

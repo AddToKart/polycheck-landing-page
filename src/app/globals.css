@@ -379,8 +379,8 @@
   animation: pingSlow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-/* PUP Star Decoration */
-.pup-star-gold {
+/* Gold star decoration */
+.star-gold {
   width: 0;
   height: 0;
   border-left: 16px solid transparent;
@@ -390,7 +390,7 @@
   filter: drop-shadow(0 0 10px rgba(230, 198, 101, 0.5));
 }
 
-.pup-star-gold::after {
+.star-gold::after {
   content: "";
   width: 0;
   height: 0;

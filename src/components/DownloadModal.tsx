@@ -160,7 +160,7 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
               </span>
             </div>
             <p className="text-xs text-zinc-500 dark:text-zinc-400">
-              Android Application Package · Official PUP Release
+              Android Application Package · Official Release
               {buildDate ? ` · ${buildDate}` : ""}
             </p>
           </div>

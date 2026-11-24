@@ -55,7 +55,7 @@ export default function DownloadCta() {
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div aria-hidden="true" className="flex justify-center mb-8">
-            <div className="pup-star-gold scale-[0.8]" />
+            <div className="star-gold scale-[0.8]" />
           </div>
 
           <Reveal>
