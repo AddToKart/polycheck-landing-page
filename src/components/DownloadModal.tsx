@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { Download, X, ShieldCheck, CheckCircle2, FileCode, Copy, Check } from "lucide-react";
 import { APK_FILE, APK_URL, LATEST_RELEASE_API, RELEASES_PAGE } from "@/lib/config";
 
@@ -231,6 +232,14 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
             </button>
           </div>
         ) : null}
+
+        <p className="mb-3 text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-400">
+          The app uses your camera and, for in-person classes, your location at scan time. Read the{" "}
+          <Link href="/privacy" className="underline hover:text-maroon dark:hover:text-golden">Privacy Policy</Link>{" "}
+          and{" "}
+          <Link href="/terms" className="underline hover:text-maroon dark:hover:text-golden">Terms</Link>{" "}
+          before you install.
+        </p>
 
         {/* CTA — a real permalink; the browser handles the download */}
         {downloaded ? (

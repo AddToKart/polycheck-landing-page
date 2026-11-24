@@ -1,6 +1,6 @@
 "use client";
 
-import { ShieldCheck, Heart } from "lucide-react";
+import Link from "next/link";
 
 export default function LandingFooter() {
   return (
@@ -28,6 +28,17 @@ export default function LandingFooter() {
         <p className="text-xs text-white/70 mb-2 font-mono">
           Signed QR · GPS Geofence · Offline-First
         </p>
+
+        {/* Legal */}
+        <nav aria-label="Legal" className="flex items-center justify-center gap-6 mb-4 text-xs font-dmSans">
+          <Link href="/privacy" className="text-white/80 hover:text-golden underline-offset-4 hover:underline transition-colors">
+            Privacy Policy
+          </Link>
+          <span aria-hidden="true" className="text-golden/60">◆</span>
+          <Link href="/terms" className="text-white/80 hover:text-golden underline-offset-4 hover:underline transition-colors">
+            Terms &amp; Conditions
+          </Link>
+        </nav>
 
         {/* Copyright */}
         <p className="text-xs text-white/55 font-dmSans flex items-center justify-center gap-1">

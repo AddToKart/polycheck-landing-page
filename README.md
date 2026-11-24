@@ -44,7 +44,17 @@ All external links live in [`src/lib/config.ts`](src/lib/config.ts).
 |---|---|---|
 | `NEXT_PUBLIC_WEB_APP_URL` | `https://polycheck-zeta.vercel.app` | Where "Open Web Dashboard" links go (also the canonical metadata base) |
 
-Set it at build time, e.g. when the dashboard moves to a custom domain.
+| `NEXT_PUBLIC_PRIVACY_CONTACT_EMAIL` | _(empty)_ | Optional address shown in the Contact section of `/privacy` and `/terms`. When empty, the pages point users to their institution's administrator / Data Protection Officer |
+
+Set these at build time, e.g. when the dashboard moves to a custom domain.
+
+## Legal pages
+
+`/privacy` and `/terms` are static pages (`src/app/privacy`, `src/app/terms`) linked from the
+footer, the download section and the install modal. They describe what the app collects
+(checked against the monorepo's data inventory, Android manifest and retention jobs).
+Update `LEGAL_UPDATED` / `LEGAL_VERSION` in `src/lib/legal.ts` whenever they change, and
+re-check them if the app starts collecting anything new.
 
 ## Notes
 

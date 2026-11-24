@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Download, QrCode, ShieldCheck, ArrowRight } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
+import Link from "next/link";
 import DownloadModal from "./DownloadModal";
 import Reveal from "./Reveal";
 import { APK_FILE, APK_URL, LATEST_RELEASE_API, WEB_APP_URL } from "@/lib/config";
@@ -118,6 +119,13 @@ export default function DownloadCta() {
                 <Download className="w-4 h-4" />
                 <span>Download APK Package</span>
               </button>
+              <p className="mt-4 text-[11px] text-white/65 font-dmSans leading-relaxed">
+                By installing Polycheck you agree to the{" "}
+                <Link href="/terms" className="text-golden underline underline-offset-2 hover:text-golden/80">Terms</Link>
+                {" "}and acknowledge the{" "}
+                <Link href="/privacy" className="text-golden underline underline-offset-2 hover:text-golden/80">Privacy Policy</Link>
+                {" "}— including what the app collects and why.
+              </p>
             </div>
           </Reveal>
 
