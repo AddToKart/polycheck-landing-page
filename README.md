@@ -56,6 +56,15 @@ footer, the download section and the install modal. They describe what the app c
 Update `LEGAL_UPDATED` / `LEGAL_VERSION` in `src/lib/legal.ts` whenever they change, and
 re-check them if the app starts collecting anything new.
 
+## Ingestion gateway figures
+
+The "Ingestion Gateway" section (`src/components/IngestGateway.tsx`) quotes results from the
+monorepo's own load tests and the gateway's default settings (buffer size, batch size, retry and
+dead-letter limits). Sources: `plan/ingest-gateway-scaling-plan.md` (§10.8 corrected runs),
+`plan/load-simulation-plan.md` (pre-gateway burst) and `services/ingest/src/config.ts`.
+When you run a larger or production-grade test, update the numbers in the `stats` array and
+the footnote there — keep the test conditions stated next to each figure.
+
 ## Notes
 
 - The QR codes on the page are decorative samples with an inert payload; they

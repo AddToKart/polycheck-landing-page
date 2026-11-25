@@ -8,6 +8,7 @@ import ProductStage from "@/components/ProductStage";
 import BentoFeatures from "@/components/BentoFeatures";
 import RoleFeatures from "@/components/RoleFeatures";
 import AntiCheatShowcase from "@/components/AntiCheatShowcase";
+import IngestGateway from "@/components/IngestGateway";
 import PlatformAvailability from "@/components/PlatformAvailability";
 import TechStack from "@/components/TechStack";
 import DownloadCta from "@/components/DownloadCta";
@@ -34,6 +35,7 @@ export default function Home() {
         <BentoFeatures />
         <RoleFeatures />
         <AntiCheatShowcase />
+        <IngestGateway />
         <PlatformAvailability />
         <TechStack />
         <DownloadCta />

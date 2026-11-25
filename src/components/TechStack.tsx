@@ -1,67 +1,101 @@
 "use client";
 
-import { Code2, Cpu, Database, Layout, Layers } from "lucide-react";
+import { Code2, Cpu, Database, Layout, Zap, Activity } from "lucide-react";
 import Reveal from "./Reveal";
 
 interface TechGroup {
   layer: string;
-  icon: any;
+  icon: typeof Layout;
   items: { name: string; tag: string }[];
 }
 
 const techGroups: TechGroup[] = [
   {
-    layer: "Frontend & UI",
+    layer: "Web Dashboard",
     icon: Layout,
     items: [
       { name: "Next.js 16", tag: "App Router" },
+      { name: "React 19", tag: "UI Runtime" },
       { name: "Tailwind CSS v4", tag: "Design Tokens" },
-      { name: "shadcn/ui", tag: "Primitives" },
-      { name: "TypeScript", tag: "Strict Mode" },
+      { name: "shadcn/ui + Radix", tag: "Primitives" },
+      { name: "MapLibre GL", tag: "Geofence Maps" },
+      { name: "Installable PWA", tag: "Offline Shell" },
     ],
   },
   {
-    layer: "Mobile Architecture",
+    layer: "Android App",
     icon: Cpu,
     items: [
       { name: "Flutter", tag: "Native Android" },
-      { name: "Riverpod", tag: "State & Routing" },
+      { name: "Riverpod + go_router", tag: "State & Routing" },
       { name: "Drift + SQLite", tag: "Offline Queue" },
+      { name: "mobile_scanner", tag: "QR Scanning" },
+      { name: "Geolocator", tag: "Geofence Check" },
+      { name: "Secure Storage", tag: "Keys & Credentials" },
     ],
   },
   {
-    layer: "Backend & API Services",
+    layer: "API & Realtime",
     icon: Code2,
     items: [
-      { name: "NestJS 11", tag: "REST & WebSockets" },
-      { name: "Better Auth", tag: "HttpOnly Cookies" },
-      { name: "Ed25519 Cryptography", tag: "Signed Tokens" },
+      { name: "NestJS 11", tag: "REST API" },
+      { name: "Socket.IO", tag: "Live Updates" },
+      { name: "Better Auth", tag: "HttpOnly Sessions" },
+      { name: "Ed25519 Signatures", tag: "Signed QR Tokens" },
+      { name: "Zod", tag: "Shared Contracts" },
+      { name: "Helmet + Throttler", tag: "Hardening" },
     ],
   },
   {
-    layer: "Database, Cache & Infra",
+    layer: "Ingestion Gateway",
+    icon: Zap,
+    items: [
+      { name: "Fastify 5", tag: "Hot Path" },
+      { name: "Redis Streams", tag: "Scan Buffer" },
+      { name: "Micro-Batch Writer", tag: "Ordered Commits" },
+      { name: "Native Ed25519", tag: "node:crypto Verify" },
+      { name: "Dead-Letter Queue", tag: "Poison-Pill Safety" },
+      { name: "Request Dedupe", tag: "Redis NX Claims" },
+    ],
+  },
+  {
+    layer: "Data & Infrastructure",
     icon: Database,
     items: [
-      { name: "PostgreSQL", tag: "Relational Storage" },
+      { name: "PostgreSQL 16", tag: "Relational Storage" },
+      { name: "PgBouncer", tag: "Connection Pooling" },
       { name: "Prisma 7", tag: "Type-Safe Queries" },
-      { name: "Redis + BullMQ", tag: "Cache & Queues" },
-      { name: "Turborepo", tag: "Monorepo Build" },
+      { name: "Redis 7.4 + BullMQ", tag: "Cache & Queues" },
+      { name: "Nginx", tag: "Edge Proxy" },
+      { name: "Docker Compose", tag: "Containers" },
+    ],
+  },
+  {
+    layer: "Observability & Quality",
+    icon: Activity,
+    items: [
+      { name: "Prometheus", tag: "Metrics & Alerts" },
+      { name: "Pino", tag: "Structured Logs" },
+      { name: "Sentry", tag: "Web Error Reports" },
+      { name: "k6", tag: "Load Testing" },
+      { name: "Playwright", tag: "End-to-End Tests" },
+      { name: "Vitest · Jest · Flutter Test", tag: "Unit Tests" },
     ],
   },
 ];
 
 export default function TechStack() {
   return (
-    <section className="py-24 md:py-32 bg-white dark:bg-[#070709] px-6 md:px-8 border-b border-zinc-200/80 dark:border-zinc-800/80 grain">
+    <section id="stack" className="py-24 md:py-32 bg-white dark:bg-[#070709] px-6 md:px-8 border-b border-zinc-200/80 dark:border-zinc-800/80 grain">
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="kicker kicker--center mb-5">Architecture &amp; Stack</span>
             <h2 className="font-lora font-bold text-3xl sm:text-4xl md:text-5xl text-zinc-900 dark:text-white mb-4">
-              Built with modern technology.
+              The full stack.
             </h2>
             <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 font-dmSans">
-              Enterprise-grade monorepo stack crafted for performance, security, and scalability.
+              Every layer, from the phone in a student&apos;s hand to the database behind the ledger.
             </p>
           </div>
         </Reveal>

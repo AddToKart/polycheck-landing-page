@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Overview", href: "/#stage" },
   { label: "Features", href: "/#features" },
   { label: "Roles", href: "/#roles" },
+  { label: "Ingestion", href: "/#ingest" },
   { label: "Download", href: "/#download" },
 ];
 
