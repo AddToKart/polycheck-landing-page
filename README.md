@@ -42,7 +42,8 @@ All external links live in [`src/lib/config.ts`](src/lib/config.ts).
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `NEXT_PUBLIC_WEB_APP_URL` | `https://polycheck-zeta.vercel.app` | Where "Open Web Dashboard" links go (also the canonical metadata base) |
+| `NEXT_PUBLIC_WEB_APP_URL` | `https://app.polycheck.live` | Where "Open Web Dashboard" links go |
+| `NEXT_PUBLIC_SITE_URL` | `https://polycheck.live` | This page's own address (canonical / Open Graph base) |
 
 | `NEXT_PUBLIC_PRIVACY_CONTACT_EMAIL` | _(empty)_ | Optional address shown in the Contact section of `/privacy` and `/terms`. When empty, the pages point users to their institution's administrator / Data Protection Officer |
 

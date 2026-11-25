@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { WEB_APP_URL } from "@/lib/config";
+import { SITE_URL } from "@/lib/config";
 
 // Fonts are self-hosted from @fontsource (Latin subset) so the build never
 // depends on fetching Google Fonts at build time.
@@ -33,7 +33,7 @@ const dmMono = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(WEB_APP_URL),
+  metadataBase: new URL(SITE_URL),
   title: "Polycheck — Attendance Management System",
   description:
     "An offline-first attendance management system. Signed QR codes, GPS geofencing, online and in-person sessions, and live analytics for students, faculty and administrators.",

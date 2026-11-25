@@ -14,7 +14,11 @@ export const LATEST_RELEASE_API = `https://api.github.com/repos/${GITHUB_REPO}/r
 
 /** Production web dashboard (faculty, admins, students). */
 export const WEB_APP_URL =
-  process.env.NEXT_PUBLIC_WEB_APP_URL ?? "https://polycheck-zeta.vercel.app";
+  process.env.NEXT_PUBLIC_WEB_APP_URL ?? "https://app.polycheck.live";
+
+/** This landing page's own public address (canonical / Open Graph base). */
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://polycheck.live";
 
 /** Inert payload for the decorative demo QR codes — not a URL, not a real token. */
 export const DEMO_QR_PAYLOAD = "POLYCHECK-DEMO-QR (sample only, not a real session)";
