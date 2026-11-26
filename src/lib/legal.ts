@@ -3,7 +3,7 @@
  * Bump LEGAL_UPDATED whenever either document changes materially.
  */
 export const LEGAL_UPDATED = "November 26, 2026";
-export const LEGAL_VERSION = "1.1";
+export const LEGAL_VERSION = "1.2";
 
 /**
  * Optional public contact for privacy requests (set at build time).

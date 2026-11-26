@@ -33,7 +33,7 @@ const platforms = [
     tag: "Not yet available",
     description:
       "There is no native iOS build yet. iPhone and iPad users can open the web dashboard in Safari and add it to the Home Screen as a PWA.",
-    badge: "Coming Soon",
+    badge: "Not Available Yet",
     cta: "Use the Web App on iOS",
     actionType: "ios" as const,
   },

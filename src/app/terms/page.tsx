@@ -138,16 +138,17 @@ export default function TermsPage() {
       {/* 5 */}
       <LegalSection id="flags" index={next()} title="Flags, disputes & decisions">
         <p>
-          Polycheck monitors for signs of cheating — such as an expired or reused QR code, a
-          location outside the geofence, mock location, a rooted or emulated device, or a second
-          device on the same account. When it sees one, the check-in is usually{" "}
-          <strong>flagged as disputed</strong> and sent to the instructor rather than silently
-          rejected.
+          Polycheck checks for signs of cheating — such as an expired or reused QR code, a
+          location outside the geofence and, in the Android app, a mock location or a rooted or
+          emulated device. Depending on what it finds, a check-in is refused or{" "}
+          <strong>flagged as disputed</strong> and sent to the instructor for review. Signing in
+          to a student account on a second device is normally refused. No automated check
+          catches every attempt.
         </p>
         <BulletList
           items={[
             "Students can dispute an entry or submit an excuse request in the app, with a reason and description.",
-            "The instructor can accept the entry as present, reject it as absent, or override it manually. The decision is recorded with who made it and when.",
+            "The instructor can accept the entry as present, reject the dispute (which restores the earlier status, or marks it absent if there was none), or override it manually. The decision is recorded with who made it and when.",
             "Automated checks support, and do not replace, an instructor’s judgment. Final attendance outcomes follow the Institution’s policies.",
           ]}
         />
@@ -160,7 +161,7 @@ export default function TermsPage() {
             "Instructors are responsible for configuring their sessions sensibly — the classroom location, geofence radius, QR validity, session mode and any PIN — and for reviewing disputes and excuses fairly.",
             "Instructors must show the session QR code only to the class it is for.",
             "Section officers (class president, QAC) may only do what their role grants: a president can create sessions for their own section, and QAC members can upload timestamped proof-of-class photos. Proof photos must be genuine and taken in the class.",
-            "Administrators and faculty with a designation (IT Coordinator, Department Head, Registrar) must use their extra access only for its stated purpose and within their department scope. Their actions are written to an audit log.",
+            "Administrators and faculty with a designation (IT Coordinator, Course Head, Registrar) must use their extra access only for its stated purpose and within their course or department scope. Their actions are written to an audit log.",
             "Everyone who can see other people’s attendance data must treat it as confidential and use it only for legitimate academic purposes.",
           ]}
         />

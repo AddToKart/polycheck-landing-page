@@ -44,7 +44,7 @@ const tiles = [
     index: "06",
     title: "Multi-Layered Anti-Cheat Defense",
     badge: "Anti-Proxy",
-    body: "One active device per student, a trusted server clock, mock-GPS and rooted-device detection, and a dispute workflow where faculty accept, reject or manually override flagged records.",
+    body: "One active device per student, a trusted server clock, mock-GPS and rooted-device detection in the Android app, and a dispute workflow where faculty accept, reject or manually override flagged records.",
   },
 ];
 

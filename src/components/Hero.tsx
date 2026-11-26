@@ -104,7 +104,7 @@ export default function Hero() {
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <span className="text-zinc-400 dark:text-zinc-500 font-mono uppercase tracking-wider text-[10px]">Student No.</span>
-                    <span className="font-mono font-semibold text-maroon dark:text-golden text-right">2023-01942</span>
+                    <span className="font-mono font-semibold text-maroon dark:text-golden text-right">2023-00123-SM-0</span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
                     <span className="text-zinc-400 dark:text-zinc-500 font-mono uppercase tracking-wider text-[10px]">Program</span>

@@ -49,11 +49,11 @@ const roles: RoleGroup[] = [
     tag: "Super admins · Designated faculty",
     features: [
       "Account creation, password resets and roster imports",
-      "Department-wide reports, excuses and at-risk oversight",
+      "Reports, excuses and at-risk oversight, limited to what each role may see",
       "Server status, maintenance controls and issue triage",
       "Global search across subjects, sections and sessions",
       "Audit logs and institution-wide settings",
-      "Designations — IT Coordinator, Department Head and Registrar — give faculty only the admin tools they need",
+      "Designations — IT Coordinator, Course Head and Registrar — give faculty only the admin tools they need",
     ],
   },
 ];

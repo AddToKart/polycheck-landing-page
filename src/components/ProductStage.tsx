@@ -173,15 +173,15 @@ export default function ProductStage() {
                 className="space-y-4"
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="font-lora font-bold text-xl text-white">Live Check-In Stream</h3>
+                  <h3 className="font-lora font-bold text-xl text-white">Live Check-In Stream <span className="font-mono text-[10px] font-normal uppercase tracking-wider text-white/60">Sample data · demo only</span></h3>
                   <span className="text-xs font-mono text-golden">41 / 45 Present (92.4%)</span>
                 </div>
 
                 <div className="space-y-3">
                   {[
-                    { name: "Dela Cruz, Juan A.", no: "2023-01942", dist: "12.4m", time: "Just now" },
-                    { name: "Santos, Maria Clara", no: "2023-08119", dist: "8.1m", time: "2m ago" },
-                    { name: "Reyes, Mark Anthony", no: "2023-04210", dist: "14.2m", time: "5m ago" },
+                    { name: "Dela Cruz, Juan A.", no: "2023-00123-SM-0", dist: "12.4m", time: "Just now" },
+                    { name: "Santos, Maria Clara", no: "2023-00148-SM-0", dist: "8.1m", time: "2m ago" },
+                    { name: "Reyes, Mark Anthony", no: "2023-00210-SM-0", dist: "14.2m", time: "5m ago" },
                   ].map((item, i) => (
                     <div key={i} className="p-4 bg-black/40 border border-golden/20 flex items-center justify-between font-dmSans">
                       <div className="flex items-center gap-3">

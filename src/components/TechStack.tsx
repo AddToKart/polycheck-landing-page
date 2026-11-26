@@ -63,18 +63,19 @@ const techGroups: TechGroup[] = [
     icon: Database,
     items: [
       { name: "PostgreSQL 16", tag: "Relational Storage" },
-      { name: "PgBouncer", tag: "Connection Pooling" },
       { name: "Prisma 7", tag: "Type-Safe Queries" },
       { name: "Redis 7.4 + BullMQ", tag: "Cache & Queues" },
-      { name: "Nginx", tag: "Edge Proxy" },
+      { name: "Coolify + Traefik", tag: "Hosting & Proxy" },
       { name: "Docker Compose", tag: "Containers" },
+      { name: "Cloudflare Tunnel", tag: "Secure Ingress" },
+      { name: "Vercel", tag: "Web Hosting" },
     ],
   },
   {
     layer: "Observability & Quality",
     icon: Activity,
     items: [
-      { name: "Prometheus", tag: "Metrics & Alerts" },
+      { name: "Prometheus", tag: "Optional Metrics" },
       { name: "Pino", tag: "Structured Logs" },
       { name: "Sentry", tag: "Web Error Reports" },
       { name: "k6", tag: "Load Testing" },

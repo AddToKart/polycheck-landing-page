@@ -87,12 +87,12 @@ export default function PrivacyPage() {
           headers={["What", "Why we need it", "Basis"]}
           rows={[
             [
-              "Account identity — full name, student number, program and year level, department, role, profile photo, school and contact email, contact phone",
+              "Account identity — full name, student number, program and year level, department, role, school and contact email, contact phone",
               "Build class rosters, show your digital student ID, and keep official class records. Contact details let the Institution reach you about your account.",
               "Legitimate educational interests",
             ],
             [
-              "Sign-in credentials — password (stored only as a salted bcrypt hash, never in readable form) and sign-in sessions",
+              "Sign-in credentials — password (stored only as a salted bcrypt hash, never in readable form), sign-in sessions (which record the IP address and browser or app details) and, if used, hashed single-use activation or password-reset links",
               "Authenticate you, keep you signed in and, if you ask, reset your password through the contact email on your profile.",
               "Legitimate educational interests",
             ],
@@ -117,7 +117,7 @@ export default function PrivacyPage() {
               "Legitimate educational interests",
             ],
             [
-              "Disputes and excuse requests — reason, description and the decision with who made it",
+              "Disputes and excuse requests — reason, description, any photo you attach as evidence, and the decision with who made it",
               "Let you contest an attendance entry and let instructors resolve it with a record of why.",
               "Legitimate educational interests; your consent",
             ],
@@ -137,8 +137,8 @@ export default function PrivacyPage() {
               "Legitimate educational interests",
             ],
             [
-              "Audit log — who did what, when, from which IP address and browser/app, including changes to Institution settings",
-              "Tamper-evident accountability for sensitive actions.",
+              "Audit log — who did what and when, including changes to Institution settings; some entries also record the IP address",
+              "Accountability for sensitive actions.",
               "Legitimate educational interests",
             ],
             [
@@ -149,19 +149,26 @@ export default function PrivacyPage() {
           ]}
         />
 
+        <p>
+          Polycheck also records which version of this notice you accepted and when, and, for
+          email it sends you, whether the message was delivered.
+        </p>
+
         <SubHeading>Device and security signals</SubHeading>
-        <p>To protect attendance from cheating, the app and web client report a small set of technical signals:</p>
+        <p>To protect attendance from cheating, Polycheck collects a small set of technical signals:</p>
         <BulletList
           items={[
             "An opaque installation identifier for your device, used to enforce one active device per student account and the cooldown rules described in the Terms. It is not your phone number, IMEI, advertising ID or hardware serial number.",
-            "Whether a mock-location (fake GPS) provider is active.",
-            "Whether the device appears to be rooted or jailbroken, running on an emulator, or has a dynamic hooking tool attached.",
-            "Your IP address and browser or app user agent, recorded with sign-ins and audited actions.",
+            "Android app only: whether a mock-location (fake GPS) provider is active.",
+            "Android app only: whether the device appears to be rooted, running on an emulator, or has a dynamic hooking tool attached.",
+            "Your IP address and browser or app user agent, recorded with sign-ins. Some audited actions also record the IP address.",
           ]}
         />
         <p>
           These signals can cause a check-in to be flagged as <em>disputed</em> for an instructor
-          to review. They do not by themselves decide your grade or academic standing.
+          to review. They do not by themselves decide your grade or academic standing. The web
+          dashboard cannot detect fake GPS or a rooted device, and the Android signals come from
+          your phone, so they cannot catch every attempt.
         </p>
 
         <SubHeading>Instructor location</SubHeading>
@@ -177,7 +184,10 @@ export default function PrivacyPage() {
           database of your classes and any check-ins waiting to sync. An attendance PIN, if a
           session uses one, is stored encrypted (AES-256-GCM) while it waits to sync, and
           sign-in credentials and keys are held in the Android secure storage. Pending check-ins
-          are uploaded when the phone reconnects or the app is reopened.
+          are uploaded when the phone reconnects or the app is reopened. A check-in that cannot
+          be accepted is kept on the phone, including its location, so you can see what happened.
+          It stays until you sign out of the app or uninstall it; the server&rsquo;s automatic
+          location erasure does not reach data stored on your phone.
         </p>
       </LegalSection>
 
@@ -190,6 +200,7 @@ export default function PrivacyPage() {
             ["Camera", "Scan attendance QR codes and take proof-of-class photos. QR frames are read on the device; they are not saved or uploaded."],
             ["Location (precise and approximate)", "Read your position once, at scan time, to check the classroom geofence — in-person sessions only."],
             ["Internet", "Sign in, sync attendance, load class data and receive live updates."],
+            ["Network state", "Tell whether the phone is online, so waiting check-ins can be sent."],
             ["Notifications", "Declared so the app can show system alerts. The current version does not send push notifications."],
             ["Vibration", "Haptic feedback when a scan succeeds or fails."],
           ]}
@@ -238,7 +249,7 @@ export default function PrivacyPage() {
           items={[
             <><strong>Students</strong> see their own records, classes, schedule and ID. Section officers (class president, QAC) can additionally do what their role allows — create sessions or upload proof-of-class photos for their own section.</>,
             <><strong>Faculty</strong> see the classes and sessions they teach, including check-in results, disputes, excuse requests and proof photos for those classes.</>,
-            <><strong>Administrators</strong> — super admins and faculty with an administrative designation (IT Coordinator, Department Head, Registrar) — see only what their designation and department scope requires, such as department reports, account management or server status.</>,
+            <><strong>Administrators</strong> — super admins and faculty with an administrative designation (IT Coordinator, Course Head, Registrar) — see only what their designation and course or department scope requires, such as reports, account management or server status.</>,
           ]}
         />
         <p>
@@ -302,9 +313,9 @@ export default function PrivacyPage() {
         <DataTable
           headers={["Data", "Kept for"]}
           rows={[
-            ["Account identity", "While the account is active; deleted with the account."],
+            ["Account identity", "For as long as the Institution keeps the account. Accounts are disabled rather than deleted in the app; send erasure requests to the Institution."],
             ["Attendance record and signed token snapshot", "With the academic-year records. The decision (present, late, absent…) is never shredded."],
-            ["Check-in GPS coordinates, accuracy and risk signals", "Automatically erased by a nightly job after the Institution’s retention window: 7–90 days, 30 by default. The attendance result stays."],
+            ["Check-in GPS coordinates, accuracy and risk signals on the server", "Automatically erased by a nightly job after the Institution’s retention window: 7–90 days, 30 by default. The attendance result stays."],
             ["Rejected scan attempts not linked to an attendance record", "Deleted after 90 days by default."],
             ["Dispute and excuse submissions", "With the academic-year record; the outcome is kept after coordinates are erased."],
             ["Proof-of-class photos", "Until an instructor deletes them. Report screenshots follow the lifecycle of the report."],
@@ -328,7 +339,8 @@ export default function PrivacyPage() {
             "QR codes are signed with Ed25519 and expire within minutes, so they cannot be forged or reused later.",
             "Passwords are hashed with bcrypt; sign-in sessions use HTTP-only, same-site cookies on the web and secure storage on Android.",
             "On-device offline data is partitioned per account, and pending attendance PINs are encrypted with AES-256-GCM.",
-            "Access is role- and scope-based, and sensitive actions are recorded in an audit log that is anchored daily so tampering is detectable.",
+            "Access is role- and scope-based, and sensitive actions are recorded in an audit log.",
+            "Attendance records are hash-chained, and a daily anchor of that chain is written to the audit log, so altering them can be detected.",
             "Location coordinates are automatically erased on a schedule instead of being kept indefinitely.",
           ]}
         />

@@ -16,11 +16,11 @@ interface ThreatItem {
 const threats: ThreatItem[] = [
   {
     threat: "Sending QR to absent friend",
-    solution: "Short expiry (1–15 min) + GPS geofence + server re-validation",
-    detail: "QR tokens expire rapidly and are strictly geofenced to the physical classroom coordinates. An absent student outside the geofence radius cannot validate the token.",
+    solution: "Short expiry (1–15 min) + in-person GPS geofence + server re-validation",
+    detail: "QR tokens expire quickly. In in-person classes, a check-in from outside the classroom geofence is not accepted. Online classes use no location and rely on short windows and an optional meeting PIN.",
     icon: MapPin,
     securityLayer: "Dual-Fence Verification",
-    status: "BLOCKED",
+    status: "CHECKED",
   },
   {
     threat: "Logging into someone else's account",
@@ -32,16 +32,16 @@ const threats: ThreatItem[] = [
   },
   {
     threat: "GPS spoofing apps",
-    solution: "On-device mock-GPS detection + server-side verification",
-    detail: "The app refuses mock-location providers, and the server flags rooted devices, emulators, hooking tools and suspicious GPS accuracy as disputes for teacher review.",
+    solution: "Mock-GPS detection in the Android app + server-side checks",
+    detail: "The Android app refuses a check-in when it detects a mock-location provider, and the server flags rooted devices, emulators, hooking tools and suspicious GPS accuracy for teacher review. These signals come from the phone and cannot catch everything, and web check-ins cannot detect fake GPS.",
     icon: ShieldCheck,
     securityLayer: "Mock Location Detector",
-    status: "FLAGGED & BLOCKED",
+    status: "CHECKED ON ANDROID",
   },
   {
     threat: "Screenshot replay of QR",
     solution: "Signed issue time + short validity + geofence + duplicate rejection",
-    detail: "Every token carries a signed issue time and a short validity window. A forwarded screenshot goes stale quickly, fails the geofence if the student is not in the room, and duplicate submissions are rejected by the server.",
+    detail: "Every token carries a signed issue time and a short validity window. A forwarded screenshot goes stale quickly, in in-person classes it also fails the geofence if the student is not in the room, and duplicate submissions are rejected by the server.",
     icon: Smartphone,
     securityLayer: "Signed Time Window",
     status: "REJECTED",
@@ -52,7 +52,7 @@ const threats: ThreatItem[] = [
     detail: "Device system clock modifications do not alter the signed timestamp embedded in the Ed25519 token signature verified against server UTC time.",
     icon: Clock,
     securityLayer: "Trusted Server Clock",
-    status: "IMMUTABLE",
+    status: "SERVER-CHECKED",
   },
 ];
 
@@ -65,10 +65,10 @@ export default function AntiCheatShowcase() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="kicker kicker--center mb-5">Anti-Cheat Defense</span>
           <h2 className="font-lora font-bold text-3xl sm:text-4xl md:text-5xl text-zinc-900 dark:text-white mb-4">
-            Every angle covered.
+            Layers of defense.
           </h2>
           <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 font-dmSans">
-            Layered checks that make proxy attendance hard to pull off and easy to catch.
+            Layered checks that make proxy attendance harder to pull off and easier to catch. No single check is foolproof.
           </p>
         </div>
 
@@ -139,7 +139,7 @@ export default function AntiCheatShowcase() {
 
               <div className="mb-6 p-4 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
                 <p className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1">
-                  How Polycheck Stops It:
+                  How Polycheck Counters It:
                 </p>
                 <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 font-dmSans">
                   {threats[selectedThreat].solution}
