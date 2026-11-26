@@ -72,8 +72,8 @@ export default function PrivacyPage() {
         </p>
         <p>
           The Philippine <strong>Data Privacy Act of 2012 (Republic Act No. 10173)</strong> is the
-          framework the product is built around. The in-app privacy center shows the same
-          inventory and retention figures described here, computed from live data.
+          framework the product is built around. Authorized administrators also have an in-app
+          privacy center that shows the data inventory and retention figures from live data.
         </p>
       </LegalSection>
 
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
             ],
             [
               "Sign-in credentials — password (stored only as a salted bcrypt hash, never in readable form) and sign-in sessions",
-              "Authenticate you and keep you signed in.",
+              "Authenticate you, keep you signed in and, if you ask, reset your password through the contact email on your profile.",
               "Legitimate educational interests",
             ],
             [
@@ -132,7 +132,7 @@ export default function PrivacyPage() {
               "Legitimate educational interests",
             ],
             [
-              "Notifications — in-app notifications and, on the web, a push-notification subscription",
+              "Notifications — the in-app notices shown inside the app and web dashboard",
               "Tell you about excuse decisions, disputes and class events.",
               "Legitimate educational interests",
             ],
@@ -190,7 +190,7 @@ export default function PrivacyPage() {
             ["Camera", "Scan attendance QR codes and take proof-of-class photos. QR frames are read on the device; they are not saved or uploaded."],
             ["Location (precise and approximate)", "Read your position once, at scan time, to check the classroom geofence — in-person sessions only."],
             ["Internet", "Sign in, sync attendance, load class data and receive live updates."],
-            ["Notifications", "Show alerts about excuses, disputes and class events."],
+            ["Notifications", "Declared so the app can show system alerts. The current version does not send push notifications."],
             ["Vibration", "Haptic feedback when a scan succeeds or fails."],
           ]}
         />
@@ -260,9 +260,19 @@ export default function PrivacyPage() {
               "Your IP address and browser details, under GitHub’s own privacy statement. No Polycheck account data.",
             ],
             [
-              "OpenStreetMap",
-              "When an instructor views or picks a classroom location on a map (web and Android).",
+              "Resend (email delivery)",
+              "Only if the Institution turns email on: to send an account activation link, or a password reset link you ask for.",
+              "The recipient email address, your name, and the message containing a single-use link, plus delivery status. No password, student number or attendance data is included.",
+            ],
+            [
+              "OpenStreetMap (Android app) and CARTO (web dashboard)",
+              "When a classroom map is shown.",
               "Standard map-tile requests: your IP address and the map area being viewed. Not attendance data.",
+            ],
+            [
+              "Google Fonts",
+              "When the Android app downloads its typefaces.",
+              "Your IP address and device or app details, under Google’s own privacy terms. No Polycheck account data.",
             ],
             [
               "AI provider chosen by the Institution",
@@ -275,8 +285,8 @@ export default function PrivacyPage() {
               "Technical error reports: error details, page address and browser/device information.",
             ],
             [
-              "Hosting providers",
-              "Always. They run this website and the Institution’s servers.",
+              "Hosting and network providers, such as Vercel and Cloudflare",
+              "Always. They host this website and the web dashboard and carry traffic to the Institution’s server.",
               "Standard server access logs, such as IP address and request time.",
             ],
           ]}
@@ -301,7 +311,7 @@ export default function PrivacyPage() {
             ["Notifications", "Pruned after 30 days."],
             ["AI assistant conversations", "7 days."],
             ["Audit log", "7 years by default."],
-            ["Server backups", "A rolling window (30 days by default) in addition to the above."],
+            ["Server backups", "Not created automatically by Polycheck. If the Institution’s server administrator makes backups, they are kept for the period the Institution sets, in addition to the above."],
           ]}
         />
         <p>
@@ -342,7 +352,6 @@ export default function PrivacyPage() {
           items={[
             "A strictly necessary session cookie keeps you signed in. It is HTTP-only, same-site strict and lasts up to 7 days.",
             "Local storage, IndexedDB and a service worker cache pages and recent data so the dashboard can be installed as an app and keep working with a poor connection.",
-            "If you allow push notifications, your browser gives us a push subscription so we can send alerts. You can revoke it in your browser at any time.",
           ]}
         />
       </LegalSection>
@@ -354,8 +363,8 @@ export default function PrivacyPage() {
           Before any location evidence is submitted, Polycheck asks you to accept the current
           privacy notice. You may decline. If you do, QR attendance check-in stays unavailable
           to you and you should speak to your instructor about another way to record attendance.
-          You can withdraw consent later; check-ins already recorded remain part of the academic
-          record.
+          To withdraw consent later, contact your Institution&rsquo;s Polycheck administrator or
+          Data Protection Officer; check-ins already recorded remain part of the academic record.
         </p>
         <SubHeading>Your rights</SubHeading>
         <p>Under the Data Privacy Act you may, subject to the limits in the law:</p>
