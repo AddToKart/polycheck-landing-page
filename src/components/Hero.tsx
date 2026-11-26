@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Download, ChevronRight, ShieldCheck, MapPin, Lock, QrCode } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import DownloadModal from "./DownloadModal";
-import { DEMO_QR_PAYLOAD } from "@/lib/config";
+import { DEMO_QR_PAYLOAD, WEB_APP_URL } from "@/lib/config";
 
 export default function Hero() {
   const [downloadModalOpen, setDownloadModalOpen] = useState(false);
@@ -48,8 +48,8 @@ export default function Hero() {
                 <Download className="w-4 h-4" />
                 <span>Download APK Package</span>
               </button>
-              <a href="#stage" className="btn-ghost">
-                <span>Explore Interactive Demo</span>
+              <a href={WEB_APP_URL} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                <span>Open Web Dashboard</span>
                 <ChevronRight className="w-4 h-4 text-maroon dark:text-golden" />
               </a>
             </div>
