@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 
 const toc: TocItem[] = [
   { id: "scope", title: "Who this covers" },
+  { id: "signup", title: "Sign-up requests" },
   { id: "collect", title: "What we collect" },
   { id: "permissions", title: "Permissions on your phone" },
   { id: "not-collected", title: "What we do not collect" },
@@ -66,8 +67,8 @@ export default function PrivacyPage() {
           uses.
         </p>
         <p>
-          Accounts are created by the Institution for its students, faculty and administrators.
-          PolyCheck is not offered to the general public and is not directed at children outside
+          Accounts are created by the Institution for its students, faculty and administrators,
+          including through the temporary sign-up described below. PolyCheck is not offered to the general public and is not directed at children outside
           an institution&rsquo;s enrolled student body.
         </p>
         <p>
@@ -75,6 +76,23 @@ export default function PrivacyPage() {
           framework the product is built around. Authorized administrators also have an in-app
           privacy center that shows the data inventory and retention figures from live data.
         </p>
+      </LegalSection>
+
+      <LegalSection id="signup" index={next()} title="Sign-up requests">
+        <p>
+          While PolyCheck is being evaluated, the Institution may open a temporary sign-up page on
+          this website. Sending a request does not create an account: an administrator reviews it
+          first.
+        </p>
+        <BulletList
+          items={[
+            <><strong>What the form takes:</strong> your full name, email address and chosen password, and for students the student number, program and year level. It also records when you accepted this policy.</>,
+            <><strong>What it is used for:</strong> only to review your request and create your account. The password is stored only as a salted bcrypt hash.</>,
+            <><strong>Who sees it:</strong> the Institution&rsquo;s system administrators. They never see your password.</>,
+            <><strong>How long:</strong> a waiting request is kept until it is decided. A rejected request is deleted. When a request is approved, the password hash moves to your account and the rest is kept as the record of the approval.</>,
+            <><strong>Spam protection:</strong> your IP address is counted for up to one hour to limit repeated requests. This page sets no cookies.</>,
+          ]}
+        />
       </LegalSection>
 
       {/* 2 */}

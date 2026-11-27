@@ -16,6 +16,10 @@ export const LATEST_RELEASE_API = `https://api.github.com/repos/${GITHUB_REPO}/r
 export const WEB_APP_URL =
   process.env.NEXT_PUBLIC_WEB_APP_URL ?? "https://app.polycheck.live";
 
+/** Production API, used only by the temporary sign-up form. */
+export const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ?? "https://api.polycheck.live/api";
+
 /** This landing page's own public address (canonical / Open Graph base). */
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://polycheck.live";

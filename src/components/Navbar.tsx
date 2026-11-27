@@ -5,6 +5,7 @@ import { useTheme } from "./ThemeProvider";
 import { Sun, Moon, Menu, X, Download } from "lucide-react";
 import Link from "next/link";
 import DownloadModal from "./DownloadModal";
+import { useSignUpOpen } from "@/lib/registration";
 
 const navLinks = [
   { label: "Overview", href: "/#stage" },
@@ -19,6 +20,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [downloadModalOpen, setDownloadModalOpen] = useState(false);
+  const signUpOpen = useSignUpOpen();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -80,6 +82,15 @@ export default function Navbar() {
               {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4 text-golden" />}
             </button>
 
+            {signUpOpen ? (
+              <Link
+                href="/register"
+                className="hidden lg:inline-flex items-center px-5 py-2.5 text-[11px] font-bold font-dmSans uppercase tracking-[0.18em] text-maroon dark:text-golden border border-maroon dark:border-golden hover:-translate-y-0.5 transition-all"
+              >
+                Sign up
+              </Link>
+            ) : null}
+
             {/* Download Button - Desktop */}
             <button
               type="button"
@@ -118,6 +129,15 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
+              {signUpOpen ? (
+                <Link
+                  href="/register"
+                  onClick={() => setMobileOpen(false)}
+                  className="w-full text-center px-4 py-3 text-xs font-bold uppercase tracking-wider bg-maroon text-golden shadow-md"
+                >
+                  Sign up
+                </Link>
+              ) : null}
               <button
                 type="button"
                 onClick={() => {

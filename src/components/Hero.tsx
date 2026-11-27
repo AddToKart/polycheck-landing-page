@@ -4,10 +4,13 @@ import { useState } from "react";
 import { Download, ChevronRight, ShieldCheck, MapPin, Lock, QrCode } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import DownloadModal from "./DownloadModal";
+import Link from "next/link";
+import { useSignUpOpen } from "@/lib/registration";
 import { DEMO_QR_PAYLOAD, WEB_APP_URL } from "@/lib/config";
 
 export default function Hero() {
   const [downloadModalOpen, setDownloadModalOpen] = useState(false);
+  const signUpOpen = useSignUpOpen();
 
   return (
     <>
@@ -37,6 +40,13 @@ export default function Hero() {
             <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 font-dmSans max-w-xl leading-relaxed mb-10 animate-fade-in-up delay-200">
               An offline-first attendance system for classrooms. Signed QR codes, GPS geofence validation, online and in-person sessions, and live analytics for students, faculty and administrators.
             </p>
+
+            {signUpOpen ? (
+              <Link href="/register" className="btn-gold mb-4 w-full sm:w-auto">
+                <span>Sign up for an account</span>
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            ) : null}
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 animate-fade-in-up delay-300">
