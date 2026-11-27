@@ -1,23 +1,29 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { QrCode, MapPin, Monitor, ShieldCheck, Clock, Smartphone, RefreshCw, Zap } from "lucide-react";
+import { MapPin, Monitor, Clock, Smartphone, Check } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
 import { DEMO_QR_PAYLOAD } from "@/lib/config";
 
 const tabs = [
-  { id: "scanner", label: "Mobile Scanner", icon: Smartphone },
-  { id: "console", label: "Faculty Console", icon: Monitor },
-  { id: "radar", label: "GPS Radar", icon: MapPin },
+  { id: "scanner", label: "The code", icon: Smartphone },
+  { id: "console", label: "Teacher's view", icon: Monitor },
+  { id: "radar", label: "Location check", icon: MapPin },
 ] as const;
 
 type TabId = (typeof tabs)[number]["id"];
 
+const sampleStudents = [
+  { name: "Dela Cruz, Juan A.", time: "Just now", status: "present" },
+  { name: "Santos, Maria Clara", time: "2 minutes ago", status: "present" },
+  { name: "Reyes, Mark Anthony", time: "9 minutes ago", status: "late" },
+];
+
 export default function ProductStage() {
   const [activeTab, setActiveTab] = useState<TabId>("scanner");
   const [timeLeft, setTimeLeft] = useState(140);
-  const [distance, setDistance] = useState(12.4);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
@@ -47,29 +53,14 @@ export default function ProductStage() {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-zinc-900 dark:bg-[#070709] text-white px-6 md:px-8 relative overflow-hidden grain">
-      <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-maroon-deep/40 to-transparent blur-[140px] pointer-events-none" />
+    <section id="demo" className="band px-5 sm:px-8 py-16 md:py-24">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeading label="Take a look" title="See what happens in class." onBand>
+          Tap through the three views. Everything shown here is made-up sample data.
+        </SectionHeading>
 
-      <div className="max-w-6xl mx-auto relative z-10">
         <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="kicker kicker--center kicker--light mb-5">Interactive Product Stage</span>
-            <h2 className="font-lora font-bold text-3xl sm:text-4xl md:text-5xl text-white mb-4 leading-tight">
-              Experience PolyCheck in Action.
-            </h2>
-            <p className="text-sm md:text-base text-zinc-400 font-dmSans">
-              Switch views to explore the signed QR scanner, the live faculty console, and the GPS geofence check.
-            </p>
-          </div>
-        </Reveal>
-
-        {/* Tab Navigation — sharp segmented control */}
-        <Reveal delay={100}>
-          <div
-            role="tablist"
-            aria-label="Product stage views"
-            className="flex items-center justify-center gap-1 mb-10 p-1 bg-zinc-800/60 max-w-lg mx-auto border border-zinc-700/60"
-          >
+          <div role="tablist" aria-label="Sample views" className="grid grid-cols-3 sm:inline-grid gap-px bg-golden/30 border border-golden/30">
             {tabs.map((tab, idx) => (
               <button
                 key={tab.id}
@@ -84,171 +75,103 @@ export default function ProductStage() {
                 tabIndex={activeTab === tab.id ? 0 : -1}
                 onClick={() => setActiveTab(tab.id)}
                 onKeyDown={(e) => onTabKeyDown(e, idx)}
-                className={`flex-1 min-w-0 py-2.5 px-1.5 sm:px-4 text-[11px] sm:text-xs leading-tight font-bold font-dmSans transition-all flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 border ${
-                  activeTab === tab.id
-                    ? "bg-golden text-maroon-dark border-golden shadow-[0_10px_24px_-12px_rgba(255,223,0,0.6)]"
-                    : "text-zinc-400 border-transparent hover:text-white hover:border-zinc-600"
+                className={`flex min-h-12 min-w-0 flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2 py-2.5 sm:px-6 text-xs sm:text-sm font-bold leading-tight text-center transition-colors ${
+                  activeTab === tab.id ? "bg-golden text-maroon-dark" : "bg-maroon-dark text-white/85 hover:text-golden dark:bg-[#0D0D0D]"
                 }`}
               >
-                <tab.icon className="w-4 h-4" /> {tab.label}
+                <tab.icon aria-hidden="true" className="w-4 h-4" /> {tab.label}
               </button>
             ))}
           </div>
         </Reveal>
 
-        <Reveal delay={200}>
-          <div className="glass-maroon p-6 sm:p-10 relative overflow-hidden min-h-[480px] flex flex-col justify-between">
-            {/* Header Status Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-golden/20 mb-8">
-              <div className="flex items-center gap-3">
-                {/* eslint-disable-next-line @next/next/no-img-element -- static export serves the file as is */}
-                <img src="/logo.png" alt="PolyCheck logo" width={40} height={40} className="w-10 h-10 shrink-0" />
-                <div>
-                  <h3 className="font-lora font-bold text-white text-base">Software Engineering · Session #802</h3>
-                  <p className="text-xs text-golden/80 font-mono">Section A · Room Lab 3</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5">
-                <span className="w-2 h-2 bg-emerald-400 animate-pulse" />
-                <span>Signed QR Active · Live Sync</span>
-              </div>
-            </div>
-
-            {/* Tab 1: Scanner View */}
+        <Reveal>
+          <div className="mt-4 card p-5 sm:p-8 lg:p-10 lg:min-h-[25rem] flex flex-col justify-center text-ink">
             {activeTab === "scanner" && (
-              <div
-                role="tabpanel"
-                id="stage-panel-scanner"
-                aria-labelledby="stage-tab-scanner"
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
-              >
-                <div className="lg:col-span-6 space-y-4">
-                  <span className="inline-block px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider bg-golden/20 text-golden border border-golden/30">
-                    Signed QR Engine
-                  </span>
-                  <h3 className="font-lora font-bold text-2xl sm:text-3xl text-white">
-                    Short-Lived Signed QR Token
-                  </h3>
-                  <p className="text-sm text-white/80 leading-relaxed font-dmSans">
-                    Faculty display a QR code signed with an Ed25519 key and valid for a short, instructor-set window. Students scan it in the PolyCheck app, which checks the token, the time and the location.
+              <div role="tabpanel" id="stage-panel-scanner" aria-labelledby="stage-tab-scanner" className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="font-lora font-bold text-2xl sm:text-3xl mb-3">A code that runs out</h3>
+                  <p className="text-[15px] sm:text-base leading-relaxed text-muted">
+                    Your teacher decides how long the code stays open. When the countdown ends, scanning it no
+                    longer counts as on time, so an old photo of it is no use.
                   </p>
-                  <div className="pt-2 flex items-center gap-4 text-xs font-mono text-golden">
-                    <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> Expiry: {formatTime(timeLeft)}</span>
-                    <span className="flex items-center gap-1"><Zap className="w-4 h-4" /> One Class Session</span>
-                  </div>
+                  <p className="mt-5 inline-flex items-center gap-2 border border-accent px-4 py-2 text-sm font-bold text-accent">
+                    <Clock aria-hidden="true" className="w-4 h-4" /> Sample countdown {formatTime(timeLeft)}
+                  </p>
                 </div>
 
-                <div className="lg:col-span-6 flex justify-center">
-                  <div className="p-5 bg-white shadow-2xl relative">
+                <div className="flex justify-center">
+                  <div className="relative bg-white p-6 border border-zinc-200">
                     <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-                      <span className="absolute top-2 left-2 w-5 h-5 border-t-2 border-l-2 border-golden" />
-                      <span className="absolute top-2 right-2 w-5 h-5 border-t-2 border-r-2 border-golden" />
-                      <span className="absolute bottom-2 left-2 w-5 h-5 border-b-2 border-l-2 border-golden" />
-                      <span className="absolute bottom-2 right-2 w-5 h-5 border-b-2 border-r-2 border-golden" />
+                      <span className="absolute top-2 left-2 w-6 h-6 border-t-[3px] border-l-[3px] border-maroon" />
+                      <span className="absolute top-2 right-2 w-6 h-6 border-t-[3px] border-r-[3px] border-maroon" />
+                      <span className="absolute bottom-2 left-2 w-6 h-6 border-b-[3px] border-l-[3px] border-maroon" />
+                      <span className="absolute bottom-2 right-2 w-6 h-6 border-b-[3px] border-r-[3px] border-maroon" />
                     </div>
-                    <QRCodeSVG
-                      value={DEMO_QR_PAYLOAD}
-                      size={200}
-                      bgColor="#FFFFFF"
-                      fgColor="#7B1113"
-                      level="H"
-                    />
-                    <div aria-hidden="true" className="absolute inset-x-2 top-0 h-1 bg-golden animate-scan-laser shadow-[0_0_12px_#FFDF00]" />
-                    <p className="text-[10px] font-mono font-bold text-maroon text-center mt-3 uppercase tracking-wider">
-                      Sample QR · demo only
-                    </p>
+                    <QRCodeSVG value={DEMO_QR_PAYLOAD} size={190} bgColor="#FFFFFF" fgColor="#7B1113" level="H" />
+                    <p className="mt-3 text-center text-[11px] font-bold uppercase tracking-wider text-maroon">Sample only</p>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Tab 2: Console Stream View */}
             {activeTab === "console" && (
-              <div
-                role="tabpanel"
-                id="stage-panel-console"
-                aria-labelledby="stage-tab-console"
-                className="space-y-4"
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="font-lora font-bold text-xl text-white">Live Check-In Stream <span className="font-mono text-[10px] font-normal uppercase tracking-wider text-white/60">Sample data · demo only</span></h3>
-                  <span className="text-xs font-mono text-golden">41 / 45 Present (92.4%)</span>
+              <div role="tabpanel" id="stage-panel-console" aria-labelledby="stage-tab-console">
+                <div className="flex flex-wrap items-end justify-between gap-3 mb-5">
+                  <div>
+                    <h3 className="font-lora font-bold text-2xl sm:text-3xl">Names appear as students scan</h3>
+                    <p className="mt-1 text-sm text-muted">Software Engineering · sample data</p>
+                  </div>
+                  <p className="font-lora font-bold text-lg text-accent">41 of 45 checked in</p>
                 </div>
-
-                <div className="space-y-3">
-                  {[
-                    { name: "Dela Cruz, Juan A.", no: "2023-00123-SM-0", dist: "12.4m", time: "Just now" },
-                    { name: "Santos, Maria Clara", no: "2023-00148-SM-0", dist: "8.1m", time: "2m ago" },
-                    { name: "Reyes, Mark Anthony", no: "2023-00210-SM-0", dist: "14.2m", time: "5m ago" },
-                  ].map((item, i) => (
-                    <div key={i} className="p-4 bg-black/40 border border-golden/20 flex items-center justify-between font-dmSans">
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 bg-golden text-maroon-dark font-bold text-xs flex items-center justify-center">
-                          {item.name.charAt(0)}
-                        </div>
-                        <div>
-                          <p className="font-bold text-sm text-white">{item.name}</p>
-                          <p className="text-xs text-white/60 font-mono">{item.no} · GPS: {item.dist}</p>
-                        </div>
+                <ul className="space-y-2.5">
+                  {sampleStudents.map((student) => (
+                    <li key={student.name} className="card card-edge flex flex-wrap items-center justify-between gap-3 p-4">
+                      <div>
+                        <p className="font-bold text-sm sm:text-base">{student.name}</p>
+                        <p className="text-xs sm:text-sm text-muted">{student.time}</p>
                       </div>
-                      <span className="px-3 py-1 bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
-                        VERIFIED ({item.time})
+                      <span className={`badge ${student.status === "late" ? "badge-late" : "badge-present"}`}>
+                        {student.status === "late" ? "Late" : "Present"}
                       </span>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             )}
 
-            {/* Tab 3: Radar View */}
             {activeTab === "radar" && (
-              <div
-                role="tabpanel"
-                id="stage-panel-radar"
-                aria-labelledby="stage-tab-radar"
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
-              >
-                <div className="lg:col-span-6 space-y-4">
-                  <span className="inline-block px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider bg-golden/20 text-golden border border-golden/30">
-                    Haversine Geofence Engine
-                  </span>
-                  <h3 className="font-lora font-bold text-2xl sm:text-3xl text-white">
-                    Classroom GPS Radar
-                  </h3>
-                  <p className="text-sm text-white/80 leading-relaxed font-dmSans">
-                    GPS coordinates are calculated locally using the Haversine distance formula to enforce the geofence radius the instructor sets for the classroom (10–500 m).
+              <div role="tabpanel" id="stage-panel-radar" aria-labelledby="stage-tab-radar" className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="font-lora font-bold text-2xl sm:text-3xl mb-3">A circle around the classroom</h3>
+                  <p className="text-[15px] sm:text-base leading-relaxed text-muted">
+                    For face-to-face classes, your teacher picks a spot on a map and how wide the circle is, from
+                    10 to 500 meters. Inside the circle you can check in. Outside it you can&apos;t. Online
+                    classes never ask for your location.
                   </p>
-                  <div className="p-3 bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-mono flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                    <span>Student Proximity: 12.4m &lt;= 40.0m [PASS]</span>
-                  </div>
+                  <p className="mt-5 flex items-start gap-3 text-sm font-bold">
+                    <span className="badge badge-present">
+                      <Check aria-hidden="true" className="w-3.5 h-3.5" strokeWidth={3.5} /> Inside
+                    </span>
+                    <span className="pt-0.5">Sample: 12 m away, limit 40 m</span>
+                  </p>
                 </div>
 
-                <div className="lg:col-span-6 flex justify-center">
-                  <div className="relative p-6 border border-golden/30 bg-black/50 flex items-center justify-center">
-                    <div className="relative w-52 h-52 rounded-full border border-golden/40 bg-black/60 flex items-center justify-center overflow-hidden">
-                      <div className="absolute w-40 h-40 rounded-full border border-golden/30 animate-ping-slow" />
-                      <div className="absolute w-24 h-24 rounded-full border border-dashed border-golden/50" />
-                      <div className="z-10 w-12 h-12 rounded-full bg-maroon border-2 border-golden flex items-center justify-center shadow-lg">
-                        <MapPin className="w-6 h-6 text-golden" />
-                      </div>
-                      <div className="absolute bottom-3 text-[10px] font-mono bg-black/90 text-golden px-2.5 py-1 border border-golden/30">
-                        Classroom · 40m Geofence
-                      </div>
+                <div className="flex justify-center">
+                  <div aria-hidden="true" className="relative flex h-60 w-60 items-center justify-center rounded-full border-2 border-accent bg-[var(--accent-wash)]">
+                    <div className="absolute h-36 w-36 rounded-full border border-dashed border-accent" />
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-maroon border-2 border-golden">
+                      <MapPin className="w-7 h-7 text-golden" />
                     </div>
+                    {/* The sample student, inside the circle. */}
+                    <span className="absolute right-[22%] top-[27%] h-4 w-4 rounded-full bg-golden border-2 border-maroon-dark" />
+                    <span className="absolute -bottom-3 whitespace-nowrap bg-maroon px-3 py-1 text-xs font-bold text-golden">
+                      Classroom area
+                    </span>
                   </div>
                 </div>
               </div>
             )}
-
-            {/* Footer Note */}
-            <div className="mt-8 pt-4 border-t border-golden/20 flex items-center justify-between text-xs text-white/60 font-mono">
-              <span className="flex items-center gap-1.5">
-                <RefreshCw className="w-3.5 h-3.5" /> PolyCheck Stage Engine
-              </span>
-              <span>Signed · Time-boxed · Geofenced</span>
-            </div>
           </div>
         </Reveal>
       </div>

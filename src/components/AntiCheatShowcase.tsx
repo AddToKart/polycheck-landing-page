@@ -1,159 +1,95 @@
 "use client";
 
 import { useState } from "react";
-import { ShieldCheck, Lock, Smartphone, MapPin, Clock, CheckCircle2 } from "lucide-react";
+import { Send, UserX, Navigation, ImageIcon, Clock } from "lucide-react";
 import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
 
-interface ThreatItem {
-  threat: string;
-  solution: string;
-  detail: string;
-  icon: any;
-  securityLayer: string;
-  status: string;
-}
-
-const threats: ThreatItem[] = [
+const questions = [
   {
-    threat: "Sending QR to absent friend",
-    solution: "Short expiry (1–15 min) + in-person GPS geofence + server re-validation",
-    detail: "QR tokens expire quickly. In in-person classes, a check-in from outside the classroom geofence is not accepted. Online classes use no location and rely on short windows and an optional meeting PIN.",
-    icon: MapPin,
-    securityLayer: "Dual-Fence Verification",
-    status: "CHECKED",
+    icon: Send,
+    question: "What if I send the code to an absent friend?",
+    short: "In a face-to-face class, it won't count.",
+    detail:
+      "Your friend isn't in the classroom, so the check-in isn't accepted, and the code also stops working after a short time. Online classes don't use location. They rely on short time limits and a PIN your teacher can announce.",
   },
   {
-    threat: "Logging into someone else's account",
-    solution: "One active device per student account",
-    detail: "While a student is signed in on one phone, a login from any other device is rejected. After logging out, a different device has to wait out a cooldown (2 hours by default), and faculty can release a device in an emergency.",
-    icon: Lock,
-    securityLayer: "Device Session Binding",
-    status: "REJECTED",
+    icon: UserX,
+    question: "What if someone else tries to sign in as me?",
+    short: "Not while you're signed in.",
+    detail:
+      "A student account works on one device at a time. After you sign out, a different device has to wait before it can sign in (2 hours unless your school changes it). Your teacher can remove the wait if you have an emergency.",
   },
   {
-    threat: "GPS spoofing apps",
-    solution: "Mock-GPS detection in the Android app + server-side checks",
-    detail: "The Android app refuses a check-in when it detects a mock-location provider, and the server flags rooted devices, emulators, hooking tools and suspicious GPS accuracy for teacher review. These signals come from the phone and cannot catch everything, and web check-ins cannot detect fake GPS.",
-    icon: ShieldCheck,
-    securityLayer: "Mock Location Detector",
-    status: "CHECKED ON ANDROID",
+    icon: Navigation,
+    question: "What if someone uses a fake location app?",
+    short: "The Android app looks for it.",
+    detail:
+      "The Android app refuses a check-in when it detects a fake location. Phones that look tampered with are flagged for the teacher. This can't catch everything, and the website cannot detect a fake location.",
   },
   {
-    threat: "Screenshot replay of QR",
-    solution: "Signed issue time + short validity + geofence + duplicate rejection",
-    detail: "Every token carries a signed issue time and a short validity window. A forwarded screenshot goes stale quickly, in in-person classes it also fails the geofence if the student is not in the room, and duplicate submissions are rejected by the server.",
-    icon: Smartphone,
-    securityLayer: "Signed Time Window",
-    status: "REJECTED",
+    icon: ImageIcon,
+    question: "What if I save a screenshot and use it later?",
+    short: "An old screenshot stops working.",
+    detail:
+      "Each code is only open for a short time. In face-to-face classes you also have to be in the room, and the same student can't be counted twice for one class.",
   },
   {
-    threat: "Clock manipulation",
-    solution: "issuedAt is cryptographically signed into the token — device clock is irrelevant",
-    detail: "Device system clock modifications do not alter the signed timestamp embedded in the Ed25519 token signature verified against server UTC time.",
     icon: Clock,
-    securityLayer: "Trusted Server Clock",
-    status: "SERVER-CHECKED",
+    question: "What if I change the time on my phone?",
+    short: "It doesn't help.",
+    detail:
+      "The code carries the time it was made, in a way that can't be edited, and PolyCheck checks it against the server's clock instead of trusting your phone's.",
   },
 ];
 
 export default function AntiCheatShowcase() {
-  const [selectedThreat, setSelectedThreat] = useState(0);
+  const [selected, setSelected] = useState(0);
+  const current = questions[selected];
 
   return (
-    <section className="py-24 md:py-32 bg-white dark:bg-[#070709] px-6 md:px-8 border-b border-zinc-200/80 dark:border-zinc-800/80 grain">
+    <section id="fair" className="bg-page px-5 sm:px-8 py-16 md:py-24">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="kicker kicker--center mb-5">Anti-Cheat Defense</span>
-          <h2 className="font-lora font-bold text-3xl sm:text-4xl md:text-5xl text-zinc-900 dark:text-white mb-4">
-            Layers of defense.
-          </h2>
-          <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 font-dmSans">
-            Layered checks that make proxy attendance harder to pull off and easier to catch. No single check is foolproof.
-          </p>
-        </div>
+        <SectionHeading label="Fair attendance" title="Can someone cheat it?">
+          PolyCheck makes cheating harder and easier to spot. No single check is perfect.
+        </SectionHeading>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <Reveal className="lg:col-span-6" delay={0}>
-            <div className="space-y-3">
-              {threats.map((item, i) => {
-                const isSelected = selectedThreat === i;
+        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-4 lg:gap-6 items-stretch">
+          <Reveal>
+            <div className="flex flex-col gap-2.5">
+              {questions.map((item, i) => {
+                const isSelected = selected === i;
                 return (
-                  <button
-                    key={i}
-                    onClick={() => setSelectedThreat(i)}
-                    aria-pressed={isSelected}
-                    className={`w-full p-4 text-left transition-all border flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4 ${
-                      isSelected
-                        ? "bento-card border-maroon dark:border-golden"
-                        : "bg-zinc-50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 hover:border-zinc-300 dark:hover:border-zinc-600"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className={`font-mono text-[10px] tracking-[0.25em] flex-shrink-0 ${
-                        isSelected ? "text-maroon dark:text-golden" : "text-zinc-400 dark:text-zinc-600"
-                      }`}>
-                        0{i + 1}
-                      </span>
-                      <div className={`w-9 h-9 flex items-center justify-center flex-shrink-0 border ${
-                        isSelected ? "bg-maroon text-golden dark:bg-golden dark:text-maroon-dark border-maroon dark:border-golden" : "bg-maroon/5 dark:bg-golden/10 text-maroon dark:text-golden border-maroon/10 dark:border-golden/20"
-                      }`}>
-                        <item.icon className="w-4 h-4" />
+                  <div key={item.question}>
+                    <button
+                      type="button"
+                      onClick={() => setSelected(i)}
+                      aria-expanded={isSelected}
+                      className={`card flex w-full min-h-16 items-center gap-4 p-4 text-left transition-colors ${
+                        isSelected ? "card-edge bg-[var(--accent-wash)]" : "hover:bg-[var(--accent-wash)]"
+                      }`}
+                    >
+                      <item.icon aria-hidden="true" className={`w-5 h-5 shrink-0 ${isSelected ? "text-accent" : "text-muted"}`} />
+                      <span className="font-bold text-[15px] sm:text-base leading-snug text-ink">{item.question}</span>
+                    </button>
+                    {/* On phones the answer opens right under its question. */}
+                    {isSelected ? (
+                      <div className="panel p-5 lg:hidden">
+                        <p className="panel-head font-lora font-bold text-xl mb-2">{item.short}</p>
+                        <p className="text-[15px] leading-relaxed">{item.detail}</p>
                       </div>
-                      <div>
-                        <p className="font-dmSans font-bold text-sm leading-snug">
-                          {item.threat}
-                        </p>
-                        <p className="text-xs text-zinc-400">
-                          Layer: {item.securityLayer}
-                        </p>
-                      </div>
-                    </div>
-
-                    <span className={`px-2.5 py-1 text-[10px] font-mono font-bold uppercase flex-shrink-0 border ${
-                      isSelected ? "bg-maroon/10 dark:bg-golden/10 text-maroon dark:text-golden border-maroon/20 dark:border-golden/30" : "bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800"
-                    }`}>
-                      {item.status}
-                    </span>
-                  </button>
+                    ) : null}
+                  </div>
                 );
               })}
             </div>
           </Reveal>
 
-          <Reveal className="lg:col-span-6" delay={150}>
-            <div
-              aria-live="polite"
-              className="bento-card p-8 relative overflow-hidden h-full"
-            >
-              <div aria-hidden="true" className="absolute top-0 left-0 h-[3px] w-16 bg-golden" />
-              <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-zinc-200 dark:border-zinc-800 mb-6">
-                <span className="text-xs font-mono font-bold uppercase text-maroon dark:text-golden flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Defense Protocol Details
-                </span>
-                <span className="text-xs font-mono text-zinc-400">LAYERED DEFENSE</span>
-              </div>
-
-              <h3 className="font-lora font-bold text-xl text-zinc-900 dark:text-white mb-2">
-                Threat: &quot;{threats[selectedThreat].threat}&quot;
-              </h3>
-
-              <div className="mb-6 p-4 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-                <p className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1">
-                  How PolyCheck Counters It:
-                </p>
-                <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 font-dmSans">
-                  {threats[selectedThreat].solution}
-                </p>
-              </div>
-
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-dmSans mb-6">
-                {threats[selectedThreat].detail}
-              </p>
-
-              <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-300 text-xs font-mono flex items-center justify-between">
-                <span>STATUS: {threats[selectedThreat].status}</span>
-                <span className="text-[10px] uppercase">Server Verified</span>
-              </div>
+          <Reveal className="hidden lg:block" delay={120}>
+            <div aria-live="polite" className="panel flex h-full flex-col justify-center p-10">
+              <current.icon aria-hidden="true" className="panel-head w-10 h-10 mb-6" />
+              <p className="panel-head font-lora font-bold text-3xl leading-snug mb-4">{current.short}</p>
+              <p className="text-base leading-relaxed">{current.detail}</p>
             </div>
           </Reveal>
         </div>

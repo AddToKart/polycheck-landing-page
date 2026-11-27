@@ -1,7 +1,6 @@
 "use client";
 
 import { Code2, Cpu, Database, Layout, Zap, Activity } from "lucide-react";
-import Reveal from "./Reveal";
 
 interface TechGroup {
   layer: string;
@@ -87,34 +86,16 @@ const techGroups: TechGroup[] = [
 
 export default function TechStack() {
   return (
-    <section id="stack" className="py-24 md:py-32 bg-white dark:bg-[#070709] px-6 md:px-8 border-b border-zinc-200/80 dark:border-zinc-800/80 grain">
-      <div className="max-w-6xl mx-auto">
-        <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="kicker kicker--center mb-5">Architecture &amp; Stack</span>
-            <h2 className="font-lora font-bold text-3xl sm:text-4xl md:text-5xl text-zinc-900 dark:text-white mb-4">
-              The full stack.
-            </h2>
-            <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 font-dmSans">
-              Every layer, from the phone in a student&apos;s hand to the database behind the ledger.
-            </p>
-          </div>
-        </Reveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {techGroups.map((group, idx) => (
-            <Reveal key={group.layer} delay={(idx % 2) * 100}>
-              <div className="bento-card p-8 h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {techGroups.map((group) => (
+              <div key={group.layer} className="card p-5 sm:p-6 h-full">
                 <div className="flex items-center gap-3 mb-6 pb-4 border-b border-zinc-200 dark:border-zinc-800">
-                  <span className="font-mono text-[10px] tracking-[0.25em] text-zinc-400 dark:text-zinc-600">
-                    0{idx + 1}
-                  </span>
-                  <div className="w-10 h-10 bg-maroon/5 dark:bg-golden/10 flex items-center justify-center text-maroon dark:text-golden border border-maroon/10 dark:border-golden/20">
+                  <div className="icon-box !h-10 !w-10">
                     <group.icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-lora font-bold text-xl text-zinc-900 dark:text-white">
+                  <h4 className="font-lora font-bold text-xl text-ink">
                     {group.layer}
-                  </h3>
+                  </h4>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
@@ -133,10 +114,7 @@ export default function TechStack() {
                   ))}
                 </div>
               </div>
-            </Reveal>
           ))}
         </div>
-      </div>
-    </section>
   );
 }

@@ -118,9 +118,9 @@ export default function SignUpForm() {
 
   if (unreachable) {
     return (
-      <div role="alert" className="bento-card p-8 text-center">
+      <div role="alert" className="card card-edge p-8 text-center">
         <p className="mb-4 text-zinc-700 dark:text-zinc-200">{unreachable}</p>
-        <button type="button" onClick={load} className="btn-primary">
+        <button type="button" onClick={load} className="btn btn-primary">
           Try again
         </button>
       </div>
@@ -137,7 +137,7 @@ export default function SignUpForm() {
 
   if (sentAs) {
     return (
-      <div role="status" className="bento-card p-8">
+      <div role="status" className="card card-edge p-8">
         <CheckCircle2 className="mb-4 w-10 h-10 text-maroon dark:text-golden" />
         <h2 className="font-lora font-bold text-2xl mb-3 text-zinc-900 dark:text-white">Request sent</h2>
         <p className="mb-3 leading-relaxed text-zinc-700 dark:text-zinc-200">
@@ -148,10 +148,10 @@ export default function SignUpForm() {
           just chose. No email is sent, so try again later or ask your administrator.
         </p>
         <div className="flex flex-col sm:flex-row gap-3">
-          <a href={WEB_APP_URL} className="btn-primary">
+          <a href={WEB_APP_URL} className="btn btn-primary">
             Open Web Dashboard
           </a>
-          <button type="button" onClick={() => setSentAs(null)} className="btn-ghost">
+          <button type="button" onClick={() => setSentAs(null)} className="btn btn-ghost">
             Send another request
           </button>
         </div>
@@ -161,12 +161,12 @@ export default function SignUpForm() {
 
   if (!status.open) {
     return (
-      <div role="status" className="bento-card p-8 text-center">
+      <div role="status" className="card card-edge p-8 text-center">
         <h2 className="font-lora font-bold text-2xl mb-3 text-zinc-900 dark:text-white">Sign-up is closed</h2>
         <p className="mb-6 text-zinc-700 dark:text-zinc-200">
           New requests are not being accepted. If you already have an account, sign in on the web dashboard or the app.
         </p>
-        <Link href="/" className="btn-ghost">
+        <Link href="/" className="btn btn-ghost">
           Back to the home page
         </Link>
       </div>
@@ -174,7 +174,7 @@ export default function SignUpForm() {
   }
 
   return (
-    <form onSubmit={submit} noValidate className="bento-card p-5 sm:p-8 space-y-5">
+    <form onSubmit={submit} noValidate className="card card-edge p-5 sm:p-8 space-y-5">
       <fieldset>
         <legend className={LABEL}>I am a</legend>
         <div className="mt-1.5 grid grid-cols-2 gap-2">
@@ -352,7 +352,7 @@ export default function SignUpForm() {
         </p>
       ) : null}
 
-      <button type="submit" disabled={sending} className="btn-primary w-full disabled:opacity-60">
+      <button type="submit" disabled={sending} className="btn btn-primary w-full disabled:opacity-60">
         {sending ? (
           <>
             <Loader2 className="w-4 h-4 animate-spin" /> Sending…

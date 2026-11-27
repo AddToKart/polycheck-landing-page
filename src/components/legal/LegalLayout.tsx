@@ -25,30 +25,28 @@ export default function LegalLayout({ kicker, title, intro, toc, other, children
     <>
       <Navbar />
 
-      <header className="relative bg-[#F8F4ED] dark:bg-[#070709] px-6 md:px-8 pt-32 md:pt-40 pb-14 md:pb-16 overflow-hidden grain border-b border-zinc-200/80 dark:border-zinc-800/80">
-        <div aria-hidden="true" className="absolute top-0 right-0 w-[460px] h-[460px] translate-x-1/3 -translate-y-1/3 bg-maroon/10 dark:bg-golden/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="relative z-10 max-w-6xl mx-auto">
-          <span className="kicker mb-6">{kicker}</span>
-          <h1 className="font-lora font-bold text-4xl sm:text-5xl md:text-6xl text-zinc-900 dark:text-white leading-[1.05] tracking-[-0.02em] mb-5">
-            {title}
-            <span className="text-maroon dark:text-golden">.</span>
+      <header className="panel px-5 sm:px-8 pt-28 md:pt-32 pb-12 md:pb-14">
+        <div className="max-w-6xl mx-auto">
+          <span className="label mb-6">{kicker}</span>
+          <h1 className="panel-head font-lora font-bold text-4xl sm:text-5xl md:text-6xl leading-[1.05] tracking-[-0.02em] mb-5">
+            {title}.
           </h1>
-          <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-300 font-dmSans max-w-2xl leading-relaxed mb-8">
+          <p className="text-base md:text-lg max-w-2xl leading-relaxed mb-8">
             {intro}
           </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-mono text-zinc-500 dark:text-zinc-400">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
             <span>Version {LEGAL_VERSION}</span>
-            <span aria-hidden="true" className="text-golden">◆</span>
+            <span aria-hidden="true" className="panel-head">◆</span>
             <span>Last updated {LEGAL_UPDATED}</span>
-            <span aria-hidden="true" className="text-golden">◆</span>
-            <Link href={other.href} className="inline-flex items-center gap-1 font-bold text-maroon dark:text-golden hover:underline underline-offset-4">
+            <span aria-hidden="true" className="panel-head">◆</span>
+            <Link href={other.href} className="panel-head inline-flex items-center gap-1 font-bold hover:underline underline-offset-4">
               {other.label} <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
       </header>
 
-      <main id="main-content" className="bg-white dark:bg-[#0A0A0C] px-6 md:px-8 py-14 md:py-20">
+      <main id="main-content" className="bg-page px-6 md:px-8 py-14 md:py-20">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
           {/* Table of contents */}
           <aside className="lg:col-span-3">
@@ -78,8 +76,7 @@ export default function LegalLayout({ kicker, title, intro, toc, other, children
           <article className="lg:col-span-9 max-w-3xl space-y-14">
             {children}
 
-            <div className="bento-card p-8 relative overflow-hidden">
-              <div aria-hidden="true" className="absolute top-0 left-0 h-[3px] w-12 bg-golden" />
+            <div className="card card-edge p-8">
               <p className="font-lora font-bold text-xl text-zinc-900 dark:text-white mb-2">
                 Questions about this document?
               </p>
@@ -87,10 +84,10 @@ export default function LegalLayout({ kicker, title, intro, toc, other, children
                 Read the companion document, or head back to the app download.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Link href={other.href} className="btn-primary">
+                <Link href={other.href} className="btn btn-primary">
                   {other.label} <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/#download" className="btn-ghost">
+                <Link href="/#download" className="btn btn-ghost">
                   Back to download
                 </Link>
               </div>
@@ -158,8 +155,7 @@ export function BulletList({ items }: { items: ReactNode[] }) {
 
 export function Callout({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="bento-card p-6 relative overflow-hidden">
-      <div aria-hidden="true" className="absolute top-0 left-0 h-full w-[3px] bg-golden" />
+    <div className="card card-edge p-6">
       <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-maroon dark:text-golden mb-3">
         {title}
       </p>

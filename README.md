@@ -59,12 +59,23 @@ re-check them if the app starts collecting anything new.
 
 ## Ingestion gateway figures
 
-The "Ingestion Gateway" section (`src/components/IngestGateway.tsx`) quotes results from the
+The "Speed and reliability" section (`src/components/UnderTheHood.tsx`) shows three results in plain
+language; the full figures sit in its closed "How the check-in server works" panel
+(`src/components/IngestGateway.tsx`). Change both together. The latter quotes results from the
 monorepo's own load tests and the gateway's default settings (buffer size, batch size, retry and
 dead-letter limits). Sources: `plan/ingest-gateway-scaling-plan.md` (§10.8 corrected runs),
 `plan/load-simulation-plan.md` (pre-gateway burst) and `services/ingest/src/config.ts`.
 When you run a larger or production-grade test, update the numbers in the `stats` array and
 the footnote there — keep the test conditions stated next to each figure.
+
+## Writing and colors
+
+Write for a casual user: say what people see and do, and keep technical names inside the two
+closed panels in the "Speed and reliability" section.
+
+Colors follow the web dashboard, including how they are spread (`src/app/globals.css`): `.panel`
+is a solid maroon block that turns golden in dark mode, `.card-edge` is the thick left edge on
+cards, and `.badge-*` copies the dashboard's attendance labels.
 
 ## Notes
 

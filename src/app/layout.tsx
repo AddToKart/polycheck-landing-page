@@ -34,13 +34,13 @@ const dmMono = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "PolyCheck — Attendance Management System",
+  title: "PolyCheck — Class attendance app",
   description:
-    "An offline-first attendance management system. Signed QR codes, GPS geofencing, online and in-person sessions, and live analytics for students, faculty and administrators.",
+    "Scan your teacher's QR code to check in to class. Works even without signal, for students, teachers and school admins.",
   openGraph: {
-    title: "PolyCheck — Attendance Management System",
+    title: "PolyCheck — Class attendance app",
     description:
-      "Signed QR codes. GPS geofencing. Offline-first. Attendance that is hard to fake and easy to run.",
+      "Scan once and you're marked present. Harder to fake than paper, and it works even without signal.",
   },
   other: {
     "theme-color": "#7B1113",

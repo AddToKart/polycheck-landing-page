@@ -15,7 +15,6 @@ import {
   Check,
   X,
 } from "lucide-react";
-import Reveal from "./Reveal";
 
 /* ------------------------------------------------------------------ */
 /* Content — every figure below comes from PolyCheck's own load tests  */
@@ -142,34 +141,18 @@ const safetyNets = [
 
 export default function IngestGateway() {
   return (
-    <section
-      id="ingest"
-      className="py-24 md:py-32 bg-zinc-900 dark:bg-[#070709] text-white px-6 md:px-8 relative overflow-hidden grain"
-    >
-      <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[420px] bg-gradient-to-b from-maroon-deep/40 to-transparent blur-[140px] pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Heading */}
-        <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="kicker kicker--center kicker--light mb-5">Ingestion Gateway</span>
-            <h2 className="font-lora font-bold text-3xl sm:text-4xl md:text-5xl text-white mb-5 leading-tight">
-              Built for the bell rush.
-            </h2>
-            <p className="text-base md:text-lg text-zinc-300 font-dmSans leading-relaxed">
-              When a whole campus scans in the same minute, PolyCheck doesn&rsquo;t make every phone
-              wait for a database write. A dedicated Fastify gateway checks each scan in memory,
-              buffers it in Redis, and commits it in order — so bursts are absorbed instead of
-              dropped.
-            </p>
-          </div>
-        </Reveal>
+    <div className="band px-4 sm:px-6 py-8">
+      <div>
+        <p className="text-sm sm:text-base text-white/85 leading-relaxed max-w-3xl mb-8">
+          When a whole campus scans in the same minute, PolyCheck doesn&rsquo;t make every phone wait for a
+          database write. A dedicated Fastify gateway checks each scan in memory, buffers it in Redis, and
+          commits it in order, so bursts are absorbed instead of dropped.
+        </p>
 
         {/* Pipeline */}
-        <Reveal delay={100}>
           <ol
             aria-label="How a scan travels through the ingestion gateway"
-            className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] gap-3 lg:gap-2 items-stretch mb-20"
+            className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] gap-3 lg:gap-2 items-stretch mb-14"
           >
             {pipeline.map((node, i) => (
               <Fragment key={node.step}>
@@ -196,24 +179,17 @@ export default function IngestGateway() {
               </Fragment>
             ))}
           </ol>
-        </Reveal>
 
         {/* Comparison */}
-        <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-10">
-            <span className="kicker kicker--center kicker--light mb-4">How It Differs</span>
-            <h3 className="font-lora font-bold text-2xl sm:text-3xl text-white mb-3">
-              Not a request-per-write design.
-            </h3>
-            <p className="text-sm md:text-base text-zinc-300 font-dmSans">
-              Most attendance systems validate and save every scan inside the same request. PolyCheck
-              separates the fast decision from the slower write.
-            </p>
-          </div>
-        </Reveal>
+        <div className="mb-6 max-w-3xl">
+          <h4 className="font-lora font-bold text-2xl text-white mb-2">Not a request-per-write design</h4>
+          <p className="text-sm text-white/80">
+            A simpler design checks and saves every scan inside the same request. PolyCheck separates the fast
+            decision from the slower write.
+          </p>
+        </div>
 
-        <Reveal delay={100}>
-          <div className="border border-golden/20 bg-black/30 mb-20">
+          <div className="border border-golden/20 bg-black/30 mb-14">
             {/* Header row (desktop) */}
             <div className="hidden md:grid grid-cols-12 bg-maroon-dark/80 text-[10px] font-mono font-bold uppercase tracking-[0.2em]">
               <div className="col-span-3 px-5 py-3 text-zinc-400" />
@@ -249,40 +225,31 @@ export default function IngestGateway() {
               ))}
             </div>
           </div>
-        </Reveal>
 
         {/* Measured */}
-        <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-10">
-            <span className="kicker kicker--center kicker--light mb-4">Measured</span>
-            <h3 className="font-lora font-bold text-2xl sm:text-3xl text-white mb-3">
-              Numbers from our own load tests.
-            </h3>
-            <p className="text-sm md:text-base text-zinc-300 font-dmSans">
-              Run with k6 against a deliberately small server profile — two CPU cores, one gateway
-              worker — so the results are a floor, not a best case.
-            </p>
-          </div>
-        </Reveal>
+        <div className="mb-6 max-w-3xl">
+          <h4 className="font-lora font-bold text-2xl text-white mb-2">Numbers from our own load tests</h4>
+          <p className="text-sm text-white/80">
+            Run with k6 against a deliberately small server profile (two CPU cores, one gateway worker), so the
+            results are a floor, not a best case.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
-          {stats.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 80}>
-              <div className="h-full p-6 bg-black/40 border border-golden/20 relative">
+          {stats.map((stat) => (
+              <div key={stat.label} className="h-full p-6 bg-black/40 border border-golden/20 relative">
                 <div aria-hidden="true" className="absolute top-0 left-0 h-[3px] w-10 bg-golden" />
                 <p className="font-lora font-bold text-3xl xl:text-4xl text-golden leading-none mb-2 tracking-tight">
                   {stat.value}
                 </p>
                 <p className="font-dmSans font-bold text-sm text-white mb-3">{stat.label}</p>
                 <p className="text-xs text-zinc-300 leading-relaxed mb-3 font-dmSans">{stat.detail}</p>
-                <p className="text-[11px] font-mono text-zinc-500">{stat.note}</p>
+                <p className="text-[11px] font-mono text-zinc-400">{stat.note}</p>
               </div>
-            </Reveal>
           ))}
         </div>
 
         {/* Before */}
-        <Reveal>
           <div className="p-6 md:p-8 bg-maroon-dark/60 border border-golden/25 mb-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             <div className="md:col-span-8">
               <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-golden mb-2">
@@ -303,9 +270,8 @@ export default function IngestGateway() {
               <p className="text-[11px] font-mono text-zinc-500 mt-1">original path, same instant burst</p>
             </div>
           </div>
-        </Reveal>
 
-        <p className="text-[11px] leading-relaxed text-zinc-500 font-mono max-w-3xl mb-20">
+        <p className="text-xs leading-relaxed text-zinc-400 max-w-3xl mb-14">
           Load tests were run by the PolyCheck team in November 2026 against test fixtures on a local
           two-core profile, not a production campus. The 50,000-request run is mostly repeat scans,
           which the gateway rejects cheaply; the 2,000 first-time run is the realistic worst case.
@@ -315,29 +281,20 @@ export default function IngestGateway() {
         </p>
 
         {/* Safety nets */}
-        <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-10">
-            <span className="kicker kicker--center kicker--light mb-4">When Things Go Wrong</span>
-            <h3 className="font-lora font-bold text-2xl sm:text-3xl text-white">
-              Designed to fail safely.
-            </h3>
-          </div>
-        </Reveal>
+        <h4 className="font-lora font-bold text-2xl text-white mb-6">Designed to fail safely</h4>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {safetyNets.map((net, i) => (
-            <Reveal key={net.title} delay={i * 100}>
-              <div className="h-full p-6 bg-black/40 border border-golden/20">
+          {safetyNets.map((net) => (
+              <div key={net.title} className="h-full p-6 bg-black/40 border border-golden/20">
                 <div className="w-10 h-10 mb-4 bg-golden/10 border border-golden/30 text-golden flex items-center justify-center">
                   <net.icon className="w-5 h-5" />
                 </div>
                 <h4 className="font-dmSans font-bold text-base text-white mb-2">{net.title}</h4>
                 <p className="text-[13px] leading-relaxed text-zinc-300 font-dmSans">{net.body}</p>
               </div>
-            </Reveal>
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

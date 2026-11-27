@@ -12,10 +12,8 @@ import { APK_FILE, APK_URL, LATEST_RELEASE_API, RELEASES_PAGE } from "@/lib/conf
  *
  *   https://github.com/AddToKart/polycheck/releases/latest/download/polycheck-release.apk
  *
- * That URL is maintained by the monorepo's `flutter-android-release.yml`
- * workflow, which re-attaches `polycheck-release.apk` to the release marked
- * latest on every push to main/dev, so this page never needs a redeploy when
- * a new APK ships.
+ * Publishing a release with `polycheck-release.apk` and marking it latest is
+ * all it takes to ship a new APK; this page never needs a redeploy.
  */
 interface ReleaseMeta {
   tagName: string | null
@@ -118,7 +116,7 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-black/70 backdrop-blur-md animate-fade-in-up"
+      className="fixed inset-0 z-[100] flex items-center justify-center px-4 bg-black/70"
       onClick={onClose}
     >
       {/* Modal Card */}
@@ -128,22 +126,16 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
         aria-modal="true"
         aria-labelledby="download-modal-title"
         tabIndex={-1}
-        className="relative w-full max-w-lg bg-white dark:bg-[#121214] border border-zinc-200 dark:border-zinc-800 p-6 sm:p-8 shadow-2xl shadow-maroon/20 max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain focus:outline-none"
+        className="card relative w-full max-w-lg border-t-4 !border-t-accent p-6 sm:p-8 shadow-2xl max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain text-ink focus:outline-none"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={onDialogKeyDown}
       >
-        {/* Glow accent — clipped so it never adds to the popup's scroll height */}
-        <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-24 -right-24 w-48 h-48 bg-golden/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-maroon/20 rounded-full blur-3xl" />
-        </div>
-
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
           className="absolute top-3 right-3 sm:top-5 sm:right-5 z-10 p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-          aria-label="Close modal"
+          aria-label="Close"
         >
           <X className="w-5 h-5" />
         </button>
@@ -155,14 +147,14 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
               <h3 id="download-modal-title" className="font-lora font-bold text-xl text-zinc-900 dark:text-white">
-                PolyCheck APK
+                Get the Android app
               </h3>
-              <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-golden/20 text-maroon-dark dark:text-golden border border-golden/30">
-                {meta?.tagName ?? "latest release"}
+              <span className="badge badge-present">
+                {meta?.tagName ? `Version ${versionLabel}` : "Latest version"}
               </span>
             </div>
             <p className="text-xs text-zinc-500 dark:text-zinc-400">
-              Android Application Package · Official Release
+              Official PolyCheck app file (APK)
               {buildDate ? ` · ${buildDate}` : ""}
             </p>
           </div>
@@ -172,18 +164,18 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
         {meta ? (
           <div className="grid grid-cols-3 gap-3 mb-6 p-3 bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 text-center">
             <div>
-              <p className="text-[10px] uppercase font-semibold text-zinc-400">File Size</p>
+              <p className="text-[10px] uppercase font-semibold text-zinc-400">Size</p>
               <p className="text-sm font-bold text-zinc-800 dark:text-zinc-200">
                 {meta.sizeMb ? `${meta.sizeMb} MB` : "—"}
               </p>
             </div>
             <div>
-              <p className="text-[10px] uppercase font-semibold text-zinc-400">Min Android</p>
-              <p className="text-sm font-bold text-zinc-800 dark:text-zinc-200">8.0 (Oreo)</p>
+              <p className="text-[10px] uppercase font-semibold text-zinc-400">Needs</p>
+              <p className="text-sm font-bold text-zinc-800 dark:text-zinc-200">Android 8.0+</p>
             </div>
             <div>
-              <p className="text-[10px] uppercase font-semibold text-zinc-400">Security</p>
-              <p className="text-sm font-bold text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-1">
+              <p className="text-[10px] uppercase font-semibold text-zinc-400">App file</p>
+              <p className="text-sm font-bold text-accent flex items-center justify-center gap-1">
                 <ShieldCheck className="w-3.5 h-3.5" /> Signed
               </p>
             </div>
@@ -193,22 +185,22 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
         {/* Installation Steps */}
         <div className="mb-6 space-y-2.5">
           <p className="text-xs font-bold uppercase tracking-wider text-maroon dark:text-golden">
-            Quick Setup Steps:
+            How to install
           </p>
-          <ul className="text-xs text-zinc-600 dark:text-zinc-300 space-y-2">
+          <ol className="text-sm text-zinc-600 dark:text-zinc-300 space-y-2">
             <li className="flex items-start gap-2">
-              <CheckCircle2 className="w-4 h-4 text-golden flex-shrink-0 mt-0.5" />
-              <span>Tap <strong>Download Package</strong> to fetch the signed release APK.</span>
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center bg-golden text-xs font-bold text-maroon-dark">1</span>
+              <span>Tap <strong>Download</strong> and wait for the file to finish.</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle2 className="w-4 h-4 text-golden flex-shrink-0 mt-0.5" />
-              <span>Allow &quot;Install from unknown sources&quot; in Android settings if prompted.</span>
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center bg-golden text-xs font-bold text-maroon-dark">2</span>
+              <span>Open the file. If your phone asks, allow installing from this source.</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle2 className="w-4 h-4 text-golden flex-shrink-0 mt-0.5" />
-              <span>Open PolyCheck, grant Location &amp; Camera permissions to start scanning!</span>
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center bg-golden text-xs font-bold text-maroon-dark">3</span>
+              <span>Open PolyCheck and allow the camera and location so you can check in.</span>
             </li>
-          </ul>
+          </ol>
         </div>
 
         {/* Checksum Info */}
@@ -216,7 +208,7 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
           <div className="mb-6 p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
             <div className="overflow-hidden mr-2">
               <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1">
-                <FileCode className="w-3 h-3" /> SHA-256 Checksum
+                <FileCode className="w-3 h-3" /> Advanced: file fingerprint (SHA-256)
               </p>
               <p className="text-[11px] font-mono text-zinc-600 dark:text-zinc-400 truncate">
                 {meta.sha256.slice(0, 28)}…
@@ -226,16 +218,16 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
               type="button"
               onClick={copyHash}
               className="p-1.5 text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors flex-shrink-0"
-              title="Copy checksum"
-              aria-label="Copy SHA-256 checksum"
+              title="Copy"
+              aria-label="Copy the file fingerprint"
             >
-              {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
+              {copied ? <Check className="w-4 h-4 text-accent" /> : <Copy className="w-4 h-4" />}
             </button>
           </div>
         ) : null}
 
         <p className="mb-3 text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-400">
-          The app uses your camera and, for in-person classes, your location at scan time. Read the{" "}
+          The app uses your camera and, for face-to-face classes, your location at scan time. Read the{" "}
           <Link href="/privacy" className="underline hover:text-maroon dark:hover:text-golden">Privacy Policy</Link>{" "}
           and{" "}
           <Link href="/terms" className="underline hover:text-maroon dark:hover:text-golden">Terms</Link>{" "}
@@ -244,8 +236,8 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
 
         {/* CTA — a real permalink; the browser handles the download */}
         {downloaded ? (
-          <div className="text-center p-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 font-semibold text-sm flex items-center justify-center gap-2">
-            <CheckCircle2 className="w-5 h-5" /> Download started — if it did not, use the button again.
+          <div className="text-center p-3 bg-golden text-maroon-dark font-bold text-sm flex items-center justify-center gap-2">
+            <CheckCircle2 className="w-5 h-5 shrink-0" /> Download started. Check your notifications or Downloads folder.
           </div>
         ) : (
           <a
@@ -253,15 +245,15 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
             download={FALLBACK_FILE}
             onClick={() => setDownloaded(true)}
             rel="noopener"
-            className="btn-gold w-full flex items-center justify-center gap-2"
+            className="btn btn-primary w-full"
           >
-            <Download className="w-5 h-5" /> Download Package{meta?.sizeMb ? ` (${meta.sizeMb} MB)` : ""}
+            <Download className="w-5 h-5" /> Download{meta?.sizeMb ? ` (${meta.sizeMb} MB)` : ""}
           </a>
         )}
         <p className="mt-3 text-center text-[11px] text-zinc-500 dark:text-zinc-400">
-          Always the latest signed build ·{" "}
+          Always the newest version ·{" "}
           <a href={RELEASES_PAGE} target="_blank" rel="noopener noreferrer" className="underline hover:text-maroon dark:hover:text-golden">
-            all releases
+            older versions
           </a>
         </p>
       </div>

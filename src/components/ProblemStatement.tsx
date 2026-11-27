@@ -1,60 +1,44 @@
-"use client";
-
+import { ArrowRight } from "lucide-react";
 import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
 
-const stats = [
+const changes = [
   {
-    index: "01",
-    value: "Proxy",
-    label: "Classmates signing for absent friends",
-    detail: "Paper sheets and shared QR screenshots can't prove who was physically in the room.",
+    topic: "Signing for friends",
+    paper: "Anyone can write a classmate's name on the sheet.",
+    polycheck: "Each student checks in from their own account, and face-to-face classes check you're in the room.",
   },
   {
-    index: "02",
-    value: "Offline",
-    label: "Campus connectivity can't be assumed",
-    detail: "Concrete buildings and congested Wi-Fi shouldn't decide whether attendance counts.",
+    topic: "Weak signal",
+    paper: "Online forms fail when the classroom has no connection.",
+    polycheck: "Check-ins are saved on your phone and sent once you're back online.",
   },
   {
-    index: "03",
-    value: "Manual",
-    label: "Hours lost consolidating records",
-    detail: "Lost sheets, re-keyed grades and unresolvable disputes with no verification trail.",
+    topic: "Counting it all up",
+    paper: "Sheets get lost, and teachers re-type and total them by hand.",
+    polycheck: "Records are totalled for the teacher and can be downloaded as a report.",
   },
 ];
 
 export default function ProblemStatement() {
   return (
-    <section className="py-24 md:py-32 bg-white dark:bg-[#070709] px-6 md:px-8 border-b border-zinc-200/80 dark:border-zinc-800/80 grain">
-      <div className="max-w-5xl mx-auto">
-        <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="kicker kicker--center mb-5">The Problem</span>
-            <h2 className="font-lora font-bold text-3xl sm:text-4xl md:text-5xl text-zinc-900 dark:text-white mb-6 leading-tight">
-              Traditional attendance is broken.
-            </h2>
-            <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-dmSans">
-              Paper sign sheets get lost. Proxy attendance goes undetected. Students in low-signal classrooms can&apos;t always reach the system. Manual tallying wastes hours that should be spent teaching.
-            </p>
-          </div>
-        </Reveal>
+    <section className="bg-page px-5 sm:px-8 py-16 md:py-24">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeading label="Why not paper?" title="Fairer for students, easier for teachers." />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {stats.map((stat, idx) => (
-            <Reveal key={idx} delay={idx * 100}>
-              <div className="bento-card p-8 relative overflow-hidden h-full">
-                <div aria-hidden="true" className="absolute top-0 left-0 h-[3px] w-10 bg-golden" />
-                <span className="font-mono text-[10px] tracking-[0.3em] text-zinc-400 dark:text-zinc-600 mb-6 block">
-                  {stat.index}
-                </span>
-                <p className="font-lora font-bold text-5xl text-maroon dark:text-golden mb-3 tracking-tight">
-                  {stat.value}
+        <div className="border-t">
+          {changes.map((change) => (
+            <Reveal key={change.topic}>
+              <div className="grid grid-cols-1 md:grid-cols-[13rem_1fr_auto_1.25fr] gap-3 md:gap-6 md:items-center border-b py-6">
+                <h3 className="font-lora font-bold text-xl text-ink">{change.topic}</h3>
+                <p className="text-[15px] leading-relaxed text-muted">
+                  <span className="block text-xs font-bold uppercase tracking-[0.14em] mb-1">On paper</span>
+                  {change.paper}
                 </p>
-                <h3 className="font-dmSans font-bold text-base text-zinc-900 dark:text-white mb-2 leading-snug">
-                  {stat.label}
-                </h3>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                  {stat.detail}
+                <ArrowRight aria-hidden="true" className="hidden md:block w-5 h-5 text-accent" />
+                <p className="card card-edge p-4 text-[15px] leading-relaxed text-ink">
+                  <span className="block text-xs font-bold uppercase tracking-[0.14em] mb-1 text-accent">With PolyCheck</span>
+                  {change.polycheck}
                 </p>
               </div>
             </Reveal>
