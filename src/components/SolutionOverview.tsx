@@ -28,7 +28,7 @@ export default function SolutionOverview() {
 
         <Reveal delay={200}>
           <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed font-dmSans max-w-2xl mx-auto mb-10">
-            Polycheck replaces paper sign sheets with a signed-QR, GPS-verified, offline-first digital attendance system. Check-ins still work in a classroom with no signal and sync as soon as the phone is back online.
+            PolyCheck replaces paper sign sheets with a signed-QR, GPS-verified, offline-first digital attendance system. Check-ins still work in a classroom with no signal and sync as soon as the phone is back online.
           </p>
         </Reveal>
 

@@ -9,9 +9,9 @@ import LegalLayout, {
 import { PRIVACY_CONTACT_EMAIL } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions — Polycheck",
+  title: "Terms & Conditions — PolyCheck",
   description:
-    "The rules for using the Polycheck app and web dashboard: accounts, attendance, acceptable use, the optional AI assistant, installing the Android app, and more.",
+    "The rules for using the PolyCheck app and web dashboard: accounts, attendance, acceptable use, the optional AI assistant, installing the Android app, and more.",
 };
 
 const toc: TocItem[] = [
@@ -40,7 +40,7 @@ export default function TermsPage() {
     <LegalLayout
       kicker="Terms & Conditions"
       title="The ground rules"
-      intro="These terms explain what you can expect from Polycheck and what Polycheck expects from you. They apply to the Android app, the web dashboard and this website. By signing in or installing the app you agree to them."
+      intro="These terms explain what you can expect from PolyCheck and what PolyCheck expects from you. They apply to the Android app, the web dashboard and this website. By signing in or installing the app you agree to them."
       toc={toc}
       other={{ href: "/privacy", label: "Read the Privacy Policy" }}
     >
@@ -58,16 +58,16 @@ export default function TermsPage() {
       {/* 1 */}
       <LegalSection id="acceptance" index={next()} title="Acceptance">
         <p>
-          Polycheck is attendance software operated for an educational institution (the
+          PolyCheck is attendance software operated for an educational institution (the
           “Institution”) that creates and manages your account. By installing the app, signing in,
           or using the web dashboard, you agree to these Terms and to the{" "}
           <Link href="/privacy" className="font-semibold text-maroon dark:text-golden underline underline-offset-4">
             Privacy Policy
           </Link>
-          . If you do not agree, do not use Polycheck.
+          . If you do not agree, do not use PolyCheck.
         </p>
         <p>
-          Polycheck is for enrolled students, faculty and administrators of an Institution that
+          PolyCheck is for enrolled students, faculty and administrators of an Institution that
           uses it. The Institution may also have its own rules (for example on attendance,
           excuses and academic conduct); those apply in addition to these Terms, and where they
           conflict on an academic matter the Institution&rsquo;s rules decide.
@@ -121,12 +121,12 @@ export default function TermsPage() {
             "check in for someone else, or let someone check in for you;",
             "share, photograph, forward or post a session QR code so that someone who is not in the class can scan it;",
             "fake or mask your location, including with mock-location apps, or scan from outside the classroom;",
-            "run Polycheck on a rooted or jailbroken device, an emulator, or with hooking or instrumentation tools attached in order to get around its checks;",
+            "run PolyCheck on a rooted or jailbroken device, an emulator, or with hooking or instrumentation tools attached in order to get around its checks;",
             "alter, replay, forge or reverse-engineer QR tokens, requests, the app or its security checks;",
             "attempt to access another person’s account or data, or data you are not authorized to see;",
             "upload photos or text that are false, unlawful, offensive or that you have no right to share;",
             "overload, scan, probe or disrupt the service or the Institution’s systems; or",
-            "use Polycheck for any purpose other than the legitimate attendance and academic purposes it is provided for.",
+            "use PolyCheck for any purpose other than the legitimate attendance and academic purposes it is provided for.",
           ]}
         />
         <p>
@@ -138,7 +138,7 @@ export default function TermsPage() {
       {/* 5 */}
       <LegalSection id="flags" index={next()} title="Flags, disputes & decisions">
         <p>
-          Polycheck checks for signs of cheating — such as an expired or reused QR code, a
+          PolyCheck checks for signs of cheating — such as an expired or reused QR code, a
           location outside the geofence and, in the Android app, a mock location or a rooted or
           emulated device. Depending on what it finds, a check-in is refused or{" "}
           <strong>flagged as disputed</strong> and sent to the instructor for review. Signing in
@@ -170,7 +170,7 @@ export default function TermsPage() {
       {/* 7 */}
       <LegalSection id="ai" index={next()} title="Optional AI assistant">
         <p>
-          If the Institution turns it on, Polycheck includes an AI assistant. It is optional and
+          If the Institution turns it on, PolyCheck includes an AI assistant. It is optional and
           may be unavailable to you.
         </p>
         <BulletList
@@ -187,7 +187,7 @@ export default function TermsPage() {
       <LegalSection id="install" index={next()} title="Installing the Android app">
         <BulletList
           items={[
-            "The only official source of the Polycheck Android app is the download link on this website, which serves the latest signed release from GitHub Releases. Do not install copies from anywhere else.",
+            "The only official source of the PolyCheck Android app is the download link on this website, which serves the latest signed release from GitHub Releases. Do not install copies from anywhere else.",
             "Because the app is installed from a file rather than an app store, Android may ask you to allow installs from your browser or file manager. You can turn that permission off again afterwards.",
             "You can compare the file’s SHA-256 checksum, shown in the download window, with the file you received.",
             "The app requires Android 8.0 or later.",
@@ -199,7 +199,7 @@ export default function TermsPage() {
       {/* 9 */}
       <LegalSection id="availability" index={next()} title="Availability & maintenance">
         <p>
-          We aim to keep Polycheck available, but it may be unavailable from time to time. The
+          We aim to keep PolyCheck available, but it may be unavailable from time to time. The
           Institution&rsquo;s administrators can put the system into maintenance mode, during which
           you may be unable to sign in or sync, and some features (including the AI assistant) may
           be switched off. Because the app works offline, scans made during an outage are saved and
@@ -210,7 +210,7 @@ export default function TermsPage() {
       {/* 10 */}
       <LegalSection id="ip" index={next()} title="Ownership">
         <p>
-          Polycheck, its software, design, logos and content belong to their respective owners and
+          PolyCheck, its software, design, logos and content belong to their respective owners and
           are protected by law. You get a personal, non-exclusive, non-transferable right to
           install and use the app for its intended attendance purpose. You may not copy, modify,
           redistribute, sell or reverse-engineer it, except as the law allows regardless of this
@@ -218,7 +218,7 @@ export default function TermsPage() {
         </p>
         <p>
           You keep ownership of what you submit (such as excuse text and photos), and you allow the
-          Institution and Polycheck to store and use it to run the service as described in the
+          Institution and PolyCheck to store and use it to run the service as described in the
           Privacy Policy.
         </p>
       </LegalSection>
@@ -226,12 +226,12 @@ export default function TermsPage() {
       {/* 11 */}
       <LegalSection id="liability" index={next()} title="Disclaimers & liability">
         <p>
-          Polycheck is provided “as is” and “as available”. To the fullest extent permitted by law,
+          PolyCheck is provided “as is” and “as available”. To the fullest extent permitted by law,
           we do not promise that it will be uninterrupted or error-free, that GPS or camera readings
           will always be accurate, or that every instance of cheating will be detected.
         </p>
         <p>
-          To the extent the law allows, Polycheck and its contributors are not liable for indirect
+          To the extent the law allows, PolyCheck and its contributors are not liable for indirect
           or consequential losses, or for losses caused by things outside our reasonable control —
           such as device faults, network or power outages, inaccurate GPS readings, or your failure
           to sync or to follow these Terms. Nothing in these Terms limits any liability that cannot
@@ -244,7 +244,7 @@ export default function TermsPage() {
         <p>
           The Institution can suspend or close an account, and we may restrict access, if these
           Terms are broken, if security is at risk, or when you leave the Institution. You can stop
-          using Polycheck at any time by uninstalling the app and signing out of the web dashboard;
+          using PolyCheck at any time by uninstalling the app and signing out of the web dashboard;
           ask the Institution if you want your account closed. Records that must be kept as part of
           the academic record, and the clauses that by their nature should continue, survive ending
           your use.
@@ -264,9 +264,9 @@ export default function TermsPage() {
       {/* 14 */}
       <LegalSection id="changes" index={next()} title="Changes">
         <p>
-          We may update these Terms as Polycheck changes. We will change the “Last updated” date
+          We may update these Terms as PolyCheck changes. We will change the “Last updated” date
           above, and for significant changes the app may ask you to accept the new version. If you
-          keep using Polycheck after a change takes effect, you accept the updated Terms.
+          keep using PolyCheck after a change takes effect, you accept the updated Terms.
         </p>
       </LegalSection>
 
@@ -274,7 +274,7 @@ export default function TermsPage() {
       <LegalSection id="contact" index={next()} title="Contact">
         <p>
           For questions about these Terms, or about your account, contact your Institution&rsquo;s
-          Polycheck administrator.
+          PolyCheck administrator.
           {PRIVACY_CONTACT_EMAIL ? (
             <>
               {" "}You can also write to{" "}

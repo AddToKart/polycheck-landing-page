@@ -82,7 +82,7 @@ export default function AntiCheatShowcase() {
                     key={i}
                     onClick={() => setSelectedThreat(i)}
                     aria-pressed={isSelected}
-                    className={`w-full p-4 text-left transition-all border flex items-center justify-between gap-4 ${
+                    className={`w-full p-4 text-left transition-all border flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4 ${
                       isSelected
                         ? "bento-card border-maroon dark:border-golden"
                         : "bg-zinc-50 dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 hover:border-zinc-300 dark:hover:border-zinc-600"
@@ -126,7 +126,7 @@ export default function AntiCheatShowcase() {
               className="bento-card p-8 relative overflow-hidden h-full"
             >
               <div aria-hidden="true" className="absolute top-0 left-0 h-[3px] w-16 bg-golden" />
-              <div className="flex items-center justify-between pb-4 border-b border-zinc-200 dark:border-zinc-800 mb-6">
+              <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-zinc-200 dark:border-zinc-800 mb-6">
                 <span className="text-xs font-mono font-bold uppercase text-maroon dark:text-golden flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Defense Protocol Details
                 </span>
@@ -139,7 +139,7 @@ export default function AntiCheatShowcase() {
 
               <div className="mb-6 p-4 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
                 <p className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1">
-                  How Polycheck Counters It:
+                  How PolyCheck Counters It:
                 </p>
                 <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 font-dmSans">
                   {threats[selectedThreat].solution}

@@ -55,7 +55,7 @@ export default function ProductStage() {
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="kicker kicker--center kicker--light mb-5">Interactive Product Stage</span>
             <h2 className="font-lora font-bold text-3xl sm:text-4xl md:text-5xl text-white mb-4 leading-tight">
-              Experience Polycheck in Action.
+              Experience PolyCheck in Action.
             </h2>
             <p className="text-sm md:text-base text-zinc-400 font-dmSans">
               Switch views to explore the signed QR scanner, the live faculty console, and the GPS geofence check.
@@ -84,7 +84,7 @@ export default function ProductStage() {
                 tabIndex={activeTab === tab.id ? 0 : -1}
                 onClick={() => setActiveTab(tab.id)}
                 onKeyDown={(e) => onTabKeyDown(e, idx)}
-                className={`flex-1 py-2.5 px-4 text-xs font-bold font-dmSans transition-all flex items-center justify-center gap-2 border ${
+                className={`flex-1 min-w-0 py-2.5 px-1.5 sm:px-4 text-[11px] sm:text-xs leading-tight font-bold font-dmSans transition-all flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 border ${
                   activeTab === tab.id
                     ? "bg-golden text-maroon-dark border-golden shadow-[0_10px_24px_-12px_rgba(255,223,0,0.6)]"
                     : "text-zinc-400 border-transparent hover:text-white hover:border-zinc-600"
@@ -101,9 +101,8 @@ export default function ProductStage() {
             {/* Header Status Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-golden/20 mb-8">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-golden text-maroon-dark font-lora font-bold text-xl flex items-center justify-center">
-                  P
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element -- static export serves the file as is */}
+                <img src="/logo.png" alt="PolyCheck logo" width={40} height={40} className="w-10 h-10 shrink-0" />
                 <div>
                   <h3 className="font-lora font-bold text-white text-base">Software Engineering · Session #802</h3>
                   <p className="text-xs text-golden/80 font-mono">Section A · Room Lab 3</p>
@@ -132,7 +131,7 @@ export default function ProductStage() {
                     Short-Lived Signed QR Token
                   </h3>
                   <p className="text-sm text-white/80 leading-relaxed font-dmSans">
-                    Faculty display a QR code signed with an Ed25519 key and valid for a short, instructor-set window. Students scan it in the Polycheck app, which checks the token, the time and the location.
+                    Faculty display a QR code signed with an Ed25519 key and valid for a short, instructor-set window. Students scan it in the PolyCheck app, which checks the token, the time and the location.
                   </p>
                   <div className="pt-2 flex items-center gap-4 text-xs font-mono text-golden">
                     <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> Expiry: {formatTime(timeLeft)}</span>
@@ -246,7 +245,7 @@ export default function ProductStage() {
             {/* Footer Note */}
             <div className="mt-8 pt-4 border-t border-golden/20 flex items-center justify-between text-xs text-white/60 font-mono">
               <span className="flex items-center gap-1.5">
-                <RefreshCw className="w-3.5 h-3.5" /> Polycheck Stage Engine
+                <RefreshCw className="w-3.5 h-3.5" /> PolyCheck Stage Engine
               </span>
               <span>Signed · Time-boxed · Geofenced</span>
             </div>

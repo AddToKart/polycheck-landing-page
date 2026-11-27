@@ -128,33 +128,34 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
         aria-modal="true"
         aria-labelledby="download-modal-title"
         tabIndex={-1}
-        className="relative w-full max-w-lg bg-white dark:bg-[#121214] border border-zinc-200 dark:border-zinc-800 p-6 sm:p-8 shadow-2xl shadow-maroon/20 overflow-hidden focus:outline-none"
+        className="relative w-full max-w-lg bg-white dark:bg-[#121214] border border-zinc-200 dark:border-zinc-800 p-6 sm:p-8 shadow-2xl shadow-maroon/20 max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain focus:outline-none"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={onDialogKeyDown}
       >
-        {/* Glow accent */}
-        <div className="absolute -top-24 -right-24 w-48 h-48 bg-golden/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-maroon/20 rounded-full blur-3xl pointer-events-none" />
+        {/* Glow accent — clipped so it never adds to the popup's scroll height */}
+        <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-golden/20 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-maroon/20 rounded-full blur-3xl" />
+        </div>
 
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+          className="absolute top-3 right-3 sm:top-5 sm:right-5 z-10 p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Header */}
-        <div className="flex items-center gap-4 mb-6">
-          <div className="w-14 h-14 bg-maroon flex items-center justify-center text-golden font-lora font-bold text-2xl shadow-md shadow-maroon/30 flex-shrink-0">
-            P
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3 sm:gap-4 mb-6 pr-9">
+          {/* eslint-disable-next-line @next/next/no-img-element -- static export serves the file as is */}
+          <img src="/logo.png" alt="PolyCheck logo" width={56} height={56} className="w-14 h-14 flex-shrink-0" />
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
               <h3 id="download-modal-title" className="font-lora font-bold text-xl text-zinc-900 dark:text-white">
-                Polycheck APK
+                PolyCheck APK
               </h3>
               <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-golden/20 text-maroon-dark dark:text-golden border border-golden/30">
                 {meta?.tagName ?? "latest release"}
@@ -205,7 +206,7 @@ export default function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
             </li>
             <li className="flex items-start gap-2">
               <CheckCircle2 className="w-4 h-4 text-golden flex-shrink-0 mt-0.5" />
-              <span>Open Polycheck, grant Location &amp; Camera permissions to start scanning!</span>
+              <span>Open PolyCheck, grant Location &amp; Camera permissions to start scanning!</span>
             </li>
           </ul>
         </div>

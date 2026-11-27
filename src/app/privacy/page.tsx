@@ -10,9 +10,9 @@ import LegalLayout, {
 import { PRIVACY_CONTACT_EMAIL } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Polycheck",
+  title: "Privacy Policy — PolyCheck",
   description:
-    "What the Polycheck app and web dashboard collect, why, who can see it, how long it is kept, and the choices you have.",
+    "What the PolyCheck app and web dashboard collect, why, who can see it, how long it is kept, and the choices you have.",
 };
 
 const toc: TocItem[] = [
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
     <LegalLayout
       kicker="Privacy Policy"
       title="Your data, in plain language"
-      intro="Polycheck records attendance. To do that honestly it has to know who you are, which class you are in, and — for in-person classes — roughly where you are when you scan. This page lists everything the app and web dashboard collect, and what happens to it."
+      intro="PolyCheck records attendance. To do that honestly it has to know who you are, which class you are in, and — for in-person classes — roughly where you are when you scan. This page lists everything the app and web dashboard collect, and what happens to it."
       toc={toc}
       other={{ href: "/terms", label: "Read the Terms & Conditions" }}
     >
@@ -58,16 +58,16 @@ export default function PrivacyPage() {
       {/* 1 */}
       <LegalSection id="scope" index={next()} title="Who this covers">
         <p>
-          This policy applies to the Polycheck Android app, the Polycheck web dashboard, and this
-          website. Polycheck is attendance software that is set up and run by an educational
+          This policy applies to the PolyCheck Android app, the PolyCheck web dashboard, and this
+          website. PolyCheck is attendance software that is set up and run by an educational
           institution (the “Institution”). The Institution decides who gets an account, which
           classes exist and what its retention settings are, and is responsible for your
-          information as the personal information controller. Polycheck provides the tools it
+          information as the personal information controller. PolyCheck provides the tools it
           uses.
         </p>
         <p>
           Accounts are created by the Institution for its students, faculty and administrators.
-          Polycheck is not offered to the general public and is not directed at children outside
+          PolyCheck is not offered to the general public and is not directed at children outside
           an institution&rsquo;s enrolled student body.
         </p>
         <p>
@@ -80,7 +80,7 @@ export default function PrivacyPage() {
       {/* 2 */}
       <LegalSection id="collect" index={next()} title="What we collect">
         <p>
-          The table lists every category of personal information Polycheck stores, why, and on
+          The table lists every category of personal information PolyCheck stores, why, and on
           what basis. It follows the data inventory published inside the app.
         </p>
         <DataTable
@@ -150,12 +150,12 @@ export default function PrivacyPage() {
         />
 
         <p>
-          Polycheck also records which version of this notice you accepted and when, and, for
+          PolyCheck also records which version of this notice you accepted and when, and, for
           email it sends you, whether the message was delivered.
         </p>
 
         <SubHeading>Device and security signals</SubHeading>
-        <p>To protect attendance from cheating, Polycheck collects a small set of technical signals:</p>
+        <p>To protect attendance from cheating, PolyCheck collects a small set of technical signals:</p>
         <BulletList
           items={[
             "An opaque installation identifier for your device, used to enforce one active device per student account and the cooldown rules described in the Terms. It is not your phone number, IMEI, advertising ID or hardware serial number.",
@@ -215,7 +215,7 @@ export default function PrivacyPage() {
       <LegalSection id="not-collected" index={next()} title="What we do not collect">
         <BulletList
           items={[
-            "Background or continuous location. Polycheck does not request background-location access and does not trace where you go.",
+            "Background or continuous location. PolyCheck does not request background-location access and does not trace where you go.",
             "Your contacts, call logs, SMS, microphone recordings or files outside what you choose to attach.",
             "Advertising identifiers, or data for advertising, profiling or sale to third parties.",
             "Location during online sessions.",
@@ -261,14 +261,14 @@ export default function PrivacyPage() {
 
       {/* 7 */}
       <LegalSection id="third-parties" index={next()} title="Third parties">
-        <p>Some services outside Polycheck take part in specific features:</p>
+        <p>Some services outside PolyCheck take part in specific features:</p>
         <DataTable
           headers={["Service", "When", "What it sees"]}
           rows={[
             [
               "GitHub (APK hosting)",
               "When you open this website or download the app. The page asks GitHub for the latest release’s version and file size, and the APK itself is served from GitHub Releases.",
-              "Your IP address and browser details, under GitHub’s own privacy statement. No Polycheck account data.",
+              "Your IP address and browser details, under GitHub’s own privacy statement. No PolyCheck account data.",
             ],
             [
               "Resend (email delivery)",
@@ -283,7 +283,7 @@ export default function PrivacyPage() {
             [
               "Google Fonts",
               "When the Android app downloads its typefaces.",
-              "Your IP address and device or app details, under Google’s own privacy terms. No Polycheck account data.",
+              "Your IP address and device or app details, under Google’s own privacy terms. No PolyCheck account data.",
             ],
             [
               "AI provider chosen by the Institution",
@@ -303,7 +303,7 @@ export default function PrivacyPage() {
           ]}
         />
         <p>
-          The Android app itself contains no advertising or analytics SDKs, and Polycheck does not
+          The Android app itself contains no advertising or analytics SDKs, and PolyCheck does not
           embed social-media trackers.
         </p>
       </LegalSection>
@@ -322,7 +322,7 @@ export default function PrivacyPage() {
             ["Notifications", "Pruned after 30 days."],
             ["AI assistant conversations", "7 days."],
             ["Audit log", "7 years by default."],
-            ["Server backups", "Not created automatically by Polycheck. If the Institution’s server administrator makes backups, they are kept for the period the Institution sets, in addition to the above."],
+            ["Server backups", "Not created automatically by PolyCheck. If the Institution’s server administrator makes backups, they are kept for the period the Institution sets, in addition to the above."],
           ]}
         />
         <p>
@@ -372,10 +372,10 @@ export default function PrivacyPage() {
       <LegalSection id="rights" index={next()} title="Your rights & choices">
         <SubHeading>Consent</SubHeading>
         <p>
-          Before any location evidence is submitted, Polycheck asks you to accept the current
+          Before any location evidence is submitted, PolyCheck asks you to accept the current
           privacy notice. You may decline. If you do, QR attendance check-in stays unavailable
           to you and you should speak to your instructor about another way to record attendance.
-          To withdraw consent later, contact your Institution&rsquo;s Polycheck administrator or
+          To withdraw consent later, contact your Institution&rsquo;s PolyCheck administrator or
           Data Protection Officer; check-ins already recorded remain part of the academic record.
         </p>
         <SubHeading>Your rights</SubHeading>
@@ -415,7 +415,7 @@ export default function PrivacyPage() {
       {/* 13 */}
       <LegalSection id="contact" index={next()} title="Contact">
         <p>
-          To exercise your rights or ask a question, contact your Institution&rsquo;s Polycheck
+          To exercise your rights or ask a question, contact your Institution&rsquo;s PolyCheck
           administrator or Data Protection Officer. Include your student or employee number and
           the specific record you are asking about.
           {PRIVACY_CONTACT_EMAIL ? (

@@ -16,7 +16,7 @@ export default function Hero() {
         <div aria-hidden="true" className="hidden lg:flex absolute left-10 top-1/2 -translate-y-1/2 flex-col items-center gap-5 pointer-events-none">
           <span className="h-16 w-px bg-maroon/25 dark:bg-golden/25" />
           <span className="text-[10px] font-mono uppercase tracking-[0.35em] text-zinc-400 dark:text-zinc-500 [writing-mode:vertical-rl]">
-            Polycheck · Attendance, Verified
+            PolyCheck · Attendance, Verified
           </span>
           <span className="h-16 w-px bg-maroon/25 dark:bg-golden/25" />
         </div>
@@ -31,7 +31,7 @@ export default function Hero() {
             <span className="kicker mb-6 animate-fade-in-up">Attendance Management System</span>
 
             <h1 className="font-lora font-bold text-[clamp(3.25rem,9vw,7.5rem)] lg:text-8xl text-zinc-900 dark:text-white leading-[0.9] tracking-[-0.02em] mb-7 animate-fade-in-up delay-100">
-              Polycheck<span className="text-maroon dark:text-golden">.</span>
+              PolyCheck<span className="text-maroon dark:text-golden">.</span>
             </h1>
 
             <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 font-dmSans max-w-xl leading-relaxed mb-10 animate-fade-in-up delay-200">
@@ -85,7 +85,7 @@ export default function Hero() {
                 <div className="px-6 py-5 bg-maroon dark:bg-maroon-dark flex items-center justify-between">
                   <div>
                     <p className="text-[9px] tracking-[0.3em] text-golden font-mono font-semibold uppercase mb-1">
-                      Polycheck
+                      PolyCheck
                     </p>
                     <p className="font-lora font-bold text-white text-lg leading-none">
                       Digital Student ID
@@ -118,7 +118,7 @@ export default function Hero() {
 
                 {/* Scannable QR token */}
                 <div className="mx-6 mb-6 p-4 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex flex-col items-center">
-                  <div className="w-full flex items-center justify-between text-[10px] text-maroon dark:text-golden mb-3 font-mono tracking-wider">
+                  <div className="w-full flex items-center justify-between flex-wrap gap-x-3 gap-y-1 text-[10px] text-maroon dark:text-golden mb-3 font-mono tracking-wider">
                     <span className="flex items-center gap-1.5">
                       <QrCode className="w-3.5 h-3.5" /> Session #802
                     </span>

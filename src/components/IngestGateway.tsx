@@ -18,7 +18,7 @@ import {
 import Reveal from "./Reveal";
 
 /* ------------------------------------------------------------------ */
-/* Content — every figure below comes from Polycheck's own load tests  */
+/* Content — every figure below comes from PolyCheck's own load tests  */
 /* and the gateway's default configuration (services/ingest).          */
 /* ------------------------------------------------------------------ */
 
@@ -157,7 +157,7 @@ export default function IngestGateway() {
               Built for the bell rush.
             </h2>
             <p className="text-base md:text-lg text-zinc-300 font-dmSans leading-relaxed">
-              When a whole campus scans in the same minute, Polycheck doesn&rsquo;t make every phone
+              When a whole campus scans in the same minute, PolyCheck doesn&rsquo;t make every phone
               wait for a database write. A dedicated Fastify gateway checks each scan in memory,
               buffers it in Redis, and commits it in order — so bursts are absorbed instead of
               dropped.
@@ -206,7 +206,7 @@ export default function IngestGateway() {
               Not a request-per-write design.
             </h3>
             <p className="text-sm md:text-base text-zinc-300 font-dmSans">
-              Most attendance systems validate and save every scan inside the same request. Polycheck
+              Most attendance systems validate and save every scan inside the same request. PolyCheck
               separates the fast decision from the slower write.
             </p>
           </div>
@@ -218,7 +218,7 @@ export default function IngestGateway() {
             <div className="hidden md:grid grid-cols-12 bg-maroon-dark/80 text-[10px] font-mono font-bold uppercase tracking-[0.2em]">
               <div className="col-span-3 px-5 py-3 text-zinc-400" />
               <div className="col-span-4 px-5 py-3 text-zinc-300">Typical request-per-write</div>
-              <div className="col-span-5 px-5 py-3 text-golden">Polycheck gateway</div>
+              <div className="col-span-5 px-5 py-3 text-golden">PolyCheck gateway</div>
             </div>
 
             <div className="divide-y divide-white/10">
@@ -240,7 +240,7 @@ export default function IngestGateway() {
                     <Check aria-hidden="true" className="w-4 h-4 mt-0.5 flex-shrink-0 text-golden" />
                     <span>
                       <span className="md:hidden block font-mono text-[10px] uppercase tracking-wider text-golden mb-1">
-                        Polycheck gateway
+                        PolyCheck gateway
                       </span>
                       {row.polycheck}
                     </span>
@@ -306,7 +306,7 @@ export default function IngestGateway() {
         </Reveal>
 
         <p className="text-[11px] leading-relaxed text-zinc-500 font-mono max-w-3xl mb-20">
-          Load tests were run by the Polycheck team in November 2026 against test fixtures on a local
+          Load tests were run by the PolyCheck team in November 2026 against test fixtures on a local
           two-core profile, not a production campus. The 50,000-request run is mostly repeat scans,
           which the gateway rejects cheaply; the 2,000 first-time run is the realistic worst case.
           The before and after runs used different harnesses and concurrency, so they illustrate the

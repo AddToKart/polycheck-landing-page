@@ -7,7 +7,7 @@ export const LEGAL_VERSION = "1.2";
 
 /**
  * Optional public contact for privacy requests (set at build time).
- * When empty, the pages tell users to contact their institution's Polycheck
+ * When empty, the pages tell users to contact their institution's PolyCheck
  * administrator or Data Protection Officer instead.
  */
 export const PRIVACY_CONTACT_EMAIL =

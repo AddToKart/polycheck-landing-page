@@ -131,6 +131,13 @@
   white-space: nowrap;
 }
 
+@media (max-width: 480px) {
+  .kicker {
+    letter-spacing: 0.2em;
+    white-space: normal;
+  }
+}
+
 .kicker::before {
   content: "";
   width: 2.25rem;

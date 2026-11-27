@@ -25,7 +25,7 @@ const tiles = [
     index: "03",
     title: "Offline-First Classroom Attendance",
     badge: "Offline Queue",
-    body: "Classroom signals are unreliable. Polycheck validates the signed token and location on the phone, then saves the check-in in an on-device database. It syncs automatically when the phone reconnects or the app is reopened.",
+    body: "Classroom signals are unreliable. PolyCheck validates the signed token and location on the phone, then saves the check-in in an on-device database. It syncs automatically when the phone reconnects or the app is reopened.",
     foot: "Automatic Sync on Reconnect",
   },
   {
@@ -59,7 +59,7 @@ export default function BentoFeatures() {
               Built so attendance can be trusted.
             </h2>
             <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 font-dmSans">
-              The core mechanics behind every Polycheck attendance record.
+              The core mechanics behind every PolyCheck attendance record.
             </p>
           </div>
         </Reveal>

@@ -1,6 +1,6 @@
-# Polycheck Landing Page
+# PolyCheck Landing Page
 
-Marketing + install page for **Polycheck**, the attendance
+Marketing + install page for **PolyCheck**, the attendance
 management system. It is a fully static Next.js export (`output: "export"`):
 there is no server runtime to deploy.
 

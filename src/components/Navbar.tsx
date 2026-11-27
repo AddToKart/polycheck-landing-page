@@ -48,17 +48,15 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto px-6 md:px-8 h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-8 h-8 bg-maroon dark:bg-golden flex items-center justify-center text-golden dark:text-maroon-dark font-lora font-bold text-lg transition-transform group-hover:-translate-y-0.5">
-              P
-              <span aria-hidden="true" className="absolute inset-x-0 -bottom-[3px] h-[3px] bg-golden dark:bg-maroon" />
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element -- static export serves the file as is */}
+            <img src="/logo.png" alt="PolyCheck logo" width={36} height={36} className="w-9 h-9 shrink-0 transition-transform group-hover:-translate-y-0.5" />
             <span className="font-lora font-bold text-xl text-zinc-900 dark:text-white tracking-tight">
-              Polycheck
+              PolyCheck
             </span>
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -86,7 +84,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setDownloadModalOpen(true)}
-              className="hidden md:inline-flex items-center gap-1.5 px-5 py-2.5 text-[11px] font-bold font-dmSans uppercase tracking-[0.18em] bg-maroon text-golden dark:bg-golden dark:text-maroon-dark border border-maroon dark:border-golden hover:-translate-y-0.5 active:translate-y-0 transition-all shadow-sm"
+              className="hidden lg:inline-flex items-center gap-1.5 px-5 py-2.5 text-[11px] font-bold font-dmSans uppercase tracking-[0.18em] bg-maroon text-golden dark:bg-golden dark:text-maroon-dark border border-maroon dark:border-golden hover:-translate-y-0.5 active:translate-y-0 transition-all shadow-sm"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Get APK</span>
@@ -96,7 +94,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+              className="lg:hidden p-2 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
@@ -108,7 +106,7 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {mobileOpen && (
-          <div id="mobile-menu" className="md:hidden absolute top-16 left-0 right-0 bg-white/95 dark:bg-[#070709]/95 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-800 shadow-xl">
+          <div id="mobile-menu" className="lg:hidden absolute top-16 left-0 right-0 bg-white/95 dark:bg-[#070709]/95 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-800 shadow-xl">
             <div className="px-6 py-5 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a

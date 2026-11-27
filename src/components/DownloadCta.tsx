@@ -60,7 +60,7 @@ export default function DownloadCta() {
           </div>
 
           <Reveal>
-            <span className="kicker kicker--center kicker--light mb-6">Ready to Try Polycheck?</span>
+            <span className="kicker kicker--center kicker--light mb-6">Ready to Try PolyCheck?</span>
           </Reveal>
 
           <Reveal delay={100}>
@@ -86,7 +86,7 @@ export default function DownloadCta() {
               <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-6 pb-6 border-b border-golden/20">
                 <div className="text-left">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-lora font-bold text-xl text-white">Polycheck Mobile</span>
+                    <span className="font-lora font-bold text-xl text-white">PolyCheck Mobile</span>
                     <span className="px-2 py-0.5 text-[10px] font-bold uppercase bg-golden/20 text-golden border border-golden/30">
                       {meta?.tagName ?? "latest release"}
                     </span>
@@ -120,7 +120,7 @@ export default function DownloadCta() {
                 <span>Download APK Package</span>
               </button>
               <p className="mt-4 text-[11px] text-white/65 font-dmSans leading-relaxed">
-                By installing Polycheck you agree to the{" "}
+                By installing PolyCheck you agree to the{" "}
                 <Link href="/terms" className="text-golden underline underline-offset-2 hover:text-golden/80">Terms</Link>
                 {" "}and acknowledge the{" "}
                 <Link href="/privacy" className="text-golden underline underline-offset-2 hover:text-golden/80">Privacy Policy</Link>
