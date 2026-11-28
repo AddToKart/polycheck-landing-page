@@ -2,8 +2,8 @@
  * Shared metadata for the Privacy Policy and Terms pages.
  * Bump LEGAL_UPDATED whenever either document changes materially.
  */
-export const LEGAL_UPDATED = "November 27, 2026";
-export const LEGAL_VERSION = "1.3";
+export const LEGAL_UPDATED = "November 28, 2026";
+export const LEGAL_VERSION = "1.4";
 
 /**
  * Optional public contact for privacy requests (set at build time).

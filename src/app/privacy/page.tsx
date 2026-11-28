@@ -332,11 +332,13 @@ export default function PrivacyPage() {
           headers={["Data", "Kept for"]}
           rows={[
             ["Account identity", "For as long as the Institution keeps the account. Accounts are disabled rather than deleted in the app; send erasure requests to the Institution."],
-            ["Attendance record and signed token snapshot", "With the academic-year records. The decision (present, late, absent…) is never shredded."],
+            ["Attendance record and signed token snapshot", "With the academic-year records. No automatic job ever erases the decision (present, late, absent…). It is removed only if the instructor permanently deletes an archived subject, described below."],
             ["Check-in GPS coordinates, accuracy and risk signals on the server", "Automatically erased by a nightly job after the Institution’s retention window: 7–90 days, 30 by default. The attendance result stays."],
             ["Rejected scan attempts not linked to an attendance record", "Deleted after 90 days by default."],
             ["Dispute and excuse submissions", "With the academic-year record; the outcome is kept after coordinates are erased."],
-            ["Proof-of-class photos", "Until an instructor deletes them. Report screenshots follow the lifecycle of the report."],
+            ["Proof-of-class photos", "Until an instructor deletes them, or 90 days after the subject is archived, whichever comes first. Report screenshots follow the lifecycle of the report."],
+            ["Evidence of an archived subject: class photos, excuse photos, check-in coordinates and scan-attempt logs", "Permanently erased 90 days after the instructor archives the subject. Restoring the subject before then cancels the erasure. Attendance results are kept."],
+            ["An archived subject the instructor permanently deletes", "Removed at once, with its sections, class meetings, attendance records and files. This cannot be undone. The instructor is offered an export of the attendance records first, and the audit log records who deleted it."],
             ["Notifications", "Pruned after 30 days."],
             ["AI assistant conversations", "7 days."],
             ["Audit log", "7 years by default."],
@@ -345,7 +347,7 @@ export default function PrivacyPage() {
         />
         <p>
           Retention periods are settings the Institution can adjust within the documented limits;
-          the figures above are the defaults.
+          the figures above are the defaults. The 90 days for an archived subject are fixed.
         </p>
       </LegalSection>
 
